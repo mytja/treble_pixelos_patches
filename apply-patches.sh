@@ -11,6 +11,7 @@ for project in $(cd $patches/patches/$tree; echo *); do
     [ "$p" == treble/app ] && p=treble_app
     [ "$p" == vendor/hardware/overlay ] && p=vendor/hardware_overlay
     pushd $p &>/dev/null
+    git tag -d "$tree" || true     # Silently delete a tag
     for patch in $patches/patches/$tree/$project/*.patch; do
         git am --reject $patch || read -p "--- Patch $patch needs manual application. Waiting for the patch to be applied."
     done
