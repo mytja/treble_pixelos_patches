@@ -1,4 +1,4 @@
-From 3838a90769a3805f8818edaeeb96ba3f1d65a362 Mon Sep 17 00:00:00 2001
+From a822e06e0cb0792142007143d7646ecdadf2504b Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Mon, 21 Apr 2025 23:18:40 +0200
 Subject: [PATCH 2/6] fix: make bottom padding overridable too

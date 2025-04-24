@@ -1,4 +1,4 @@
-From b700d9a32fc7156ffa19b079cf27476f62012a29 Mon Sep 17 00:00:00 2001
+From 43d566c305c97887315b253d5580b223d9c755d7 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Sun, 16 Mar 2025 13:19:17 -0400
 Subject: [PATCH 17/19] Revert "Reorder release fence attachment for
@@ -8,11 +8,9 @@ This reverts commit 0b80c74300b73e937ee9a9cb58487bd126daa4d8.
 ---
  .../surfaceflinger/RegionSamplingThread.cpp   | 11 ++-
  services/surfaceflinger/SurfaceFlinger.cpp    | 97 ++++++++++---------
- services/surfaceflinger/SurfaceFlinger.h      | 15 ++-
- services/surfaceflinger/SurfaceFlinger.h.rej  | 11 +++
+ services/surfaceflinger/SurfaceFlinger.h      | 16 ++-
  .../tests/unittests/TestableSurfaceFlinger.h  |  3 +-
- 5 files changed, 79 insertions(+), 58 deletions(-)
- create mode 100644 services/surfaceflinger/SurfaceFlinger.h.rej
+ 4 files changed, 69 insertions(+), 58 deletions(-)
 
 diff --git a/services/surfaceflinger/RegionSamplingThread.cpp b/services/surfaceflinger/RegionSamplingThread.cpp
 index 08f831c..011fd9e 100644
@@ -262,7 +260,7 @@ index ca0f5ac..10948eb 100644
          presentFuture = mRenderEngine->isThreaded() ? ftl::defer(std::move(present)).share()
                                                      : ftl::yield(present()).share();
 diff --git a/services/surfaceflinger/SurfaceFlinger.h b/services/surfaceflinger/SurfaceFlinger.h
-index 5edd080..71718c4 100644
+index 5edd080..d69971a 100644
 --- a/services/surfaceflinger/SurfaceFlinger.h
 +++ b/services/surfaceflinger/SurfaceFlinger.h
 @@ -861,14 +861,13 @@ private:
@@ -303,32 +301,16 @@ index 5edd080..71718c4 100644
  
      ftl::SharedFuture<FenceResult> captureScreenshotLegacy(
              RenderAreaBuilderVariant, GetLayerSnapshotsFunction,
-@@ -895,7 +900,7 @@ private:
+@@ -895,7 +900,8 @@ private:
              const RenderArea*, const std::shared_ptr<renderengine::ExternalTexture>&,
              bool regionSampling, bool grayscale, bool isProtected, bool attachGainmap,
              ScreenCaptureResults&, std::optional<OutputCompositionState>& displayState,
 -            std::vector<std::pair<Layer*, sp<LayerFE>>>& layers);
++            std::vector<std::pair<Layer*, sp<LayerFE>>>& layers,
 +            std::vector<sp<LayerFE>>& layerFEs);
  
      bool canAllocateHwcDisplayIdForVDS(uint64_t usage);
  
-diff --git a/services/surfaceflinger/SurfaceFlinger.h.rej b/services/surfaceflinger/SurfaceFlinger.h.rej
-new file mode 100644
-index 0000000..3ef9b49
---- /dev/null
-+++ b/services/surfaceflinger/SurfaceFlinger.h.rej
-@@ -0,0 +1,11 @@
-+diff a/services/surfaceflinger/SurfaceFlinger.h b/services/surfaceflinger/SurfaceFlinger.h	(rejected hunks)
-+@@ -895,7 +900,8 @@ private:
-+             const RenderArea*, const std::shared_ptr<renderengine::ExternalTexture>&,
-+             bool regionSampling, bool grayscale, bool isProtected, bool attachGainmap,
-+             ScreenCaptureResults&, std::optional<OutputCompositionState>& displayState,
-+-            std::vector<std::pair<Layer*, sp<LayerFE>>>& layers);
-++            std::vector<std::pair<Layer*, sp<LayerFE>>>& layers,
-++            std::vector<sp<LayerFE>>& layerFEs);
-+ 
-+     void readPersistentProperties();
-+ 
 diff --git a/services/surfaceflinger/tests/unittests/TestableSurfaceFlinger.h b/services/surfaceflinger/tests/unittests/TestableSurfaceFlinger.h
 index fd8bc0d..2ba739b 100644
 --- a/services/surfaceflinger/tests/unittests/TestableSurfaceFlinger.h

@@ -1,4 +1,4 @@
-From b6ebc0c6cd0d03efd19f6a14d331a96fa1d0971c Mon Sep 17 00:00:00 2001
+From 672b192b20f8298cda5070e0628093ee0cf61144 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 6 Apr 2025 16:02:58 +0200
 Subject: [PATCH 6/6] fix: set custom UDFPS color
