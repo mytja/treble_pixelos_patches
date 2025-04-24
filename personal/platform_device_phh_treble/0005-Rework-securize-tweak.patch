@@ -1,4 +1,4 @@
-From 48aa90b345c0c415e3b57d52962accfb085e6eab Mon Sep 17 00:00:00 2001
+From b2c908d62cf90153e4c4d9d94336c73a3a0d99c9 Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Wed, 25 Dec 2019 12:34:05 +0200
 Subject: [PATCH 5/5] Rework securize tweak
@@ -21,7 +21,7 @@ index e69d151..ac1e297 100644
  
  PRODUCT_COPY_FILES += \
 diff --git a/rw-system.sh b/rw-system.sh
-index 055c2cd..6903559 100644
+index a7b94f6..543b156 100644
 --- a/rw-system.sh
 +++ b/rw-system.sh
 @@ -785,32 +785,59 @@ copyprop() {

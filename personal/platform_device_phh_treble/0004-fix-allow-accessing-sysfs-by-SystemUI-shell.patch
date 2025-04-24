@@ -1,4 +1,4 @@
-From 228fcc22384ecbf0b60ec5e13c37e39671ff232e Mon Sep 17 00:00:00 2001
+From 3243de0bc1f89b6d0ffacf19183a91620e6ebec3 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Thu, 26 Dec 2024 13:53:22 +0100
 Subject: [PATCH 4/5] fix: allow accessing sysfs by SystemUI & shell

@@ -1,4 +1,4 @@
-From 1156c00b1b3b6b169969875c579b687907821785 Mon Sep 17 00:00:00 2001
+From 4ff25adbf3138d12c3165ddec12b8f391fab2fa5 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 31 Mar 2021 23:32:37 +0200
 Subject: [PATCH 03/12] Workaround device/phh/treble conflict with SELinux
@@ -18,7 +18,7 @@ simply ignore them.
  3 files changed, 28 insertions(+), 6 deletions(-)
 
 diff --git a/libsepol/cil/src/cil_binary.c b/libsepol/cil/src/cil_binary.c
-index 3d920182..c1ebb12f 100644
+index 3d92018..c1ebb12 100644
 --- a/libsepol/cil/src/cil_binary.c
 +++ b/libsepol/cil/src/cil_binary.c
 @@ -512,13 +512,17 @@ int cil_typealias_to_policydb(policydb_t *pdb, struct cil_alias *cil_alias)
@@ -50,7 +50,7 @@ index 3d920182..c1ebb12f 100644
  	return rc;
  }
 diff --git a/libsepol/cil/src/cil_build_ast.c b/libsepol/cil/src/cil_build_ast.c
-index 19fbb04e..6740b8f1 100644
+index 19fbb04..6740b8f 100644
 --- a/libsepol/cil/src/cil_build_ast.c
 +++ b/libsepol/cil/src/cil_build_ast.c
 @@ -161,7 +161,7 @@ int cil_add_decl_to_symtab(struct cil_db *db, symtab_t *symtab, hashtab_key_t ke
@@ -79,7 +79,7 @@ index 19fbb04e..6740b8f1 100644
  		/* multiple_decls is enabled and works for this datum type, add node */
  		cil_list_append(prev->nodes, CIL_NODE, node);
 diff --git a/libsepol/cil/src/cil_resolve_ast.c b/libsepol/cil/src/cil_resolve_ast.c
-index 6c5b6338..1e0e58b6 100644
+index 6c5b633..1e0e58b 100644
 --- a/libsepol/cil/src/cil_resolve_ast.c
 +++ b/libsepol/cil/src/cil_resolve_ast.c
 @@ -519,7 +519,13 @@ static int cil_resolve_aliasactual(struct cil_tree_node *current, struct cil_db
@@ -112,5 +112,5 @@ index 6c5b6338..1e0e58b6 100644
  	}
  
 -- 
-2.43.0
+2.34.1
 

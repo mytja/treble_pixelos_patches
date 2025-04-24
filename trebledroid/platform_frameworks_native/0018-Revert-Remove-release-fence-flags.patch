@@ -1,4 +1,4 @@
-From 593b0d2f7d77473032d9fc84fcdf11dbb65345ef Mon Sep 17 00:00:00 2001
+From b78c7f353517e7e87914b96836504c5bd2cb3d26 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Sun, 16 Mar 2025 13:24:30 -0400
 Subject: [PATCH 18/19] Revert "Remove release fence flags"
@@ -24,7 +24,7 @@ Change-Id: I04eb5f0a45cc63e55b6b74f2327d182cd9f15098
  14 files changed, 364 insertions(+), 59 deletions(-)
 
 diff --git a/services/surfaceflinger/CompositionEngine/src/CompositionEngine.cpp b/services/surfaceflinger/CompositionEngine/src/CompositionEngine.cpp
-index cfcce473a2..5c5d0cd74d 100644
+index cfcce47..5c5d0cd 100644
 --- a/services/surfaceflinger/CompositionEngine/src/CompositionEngine.cpp
 +++ b/services/surfaceflinger/CompositionEngine/src/CompositionEngine.cpp
 @@ -198,23 +198,25 @@ void CompositionEngine::preComposition(CompositionRefreshArgs& args) {
@@ -69,10 +69,10 @@ index cfcce473a2..5c5d0cd74d 100644
      }
  }
 diff --git a/services/surfaceflinger/CompositionEngine/src/Output.cpp b/services/surfaceflinger/CompositionEngine/src/Output.cpp
-index f9ed92d1ee..34773de107 100644
+index 205f92a..9688a2a 100644
 --- a/services/surfaceflinger/CompositionEngine/src/Output.cpp
 +++ b/services/surfaceflinger/CompositionEngine/src/Output.cpp
-@@ -1664,7 +1664,13 @@ void Output::presentFrameAndReleaseLayers(bool flushEvenWhenDisabled) {
+@@ -1677,7 +1677,13 @@ void Output::presentFrameAndReleaseLayers(bool flushEvenWhenDisabled) {
              releaseFence =
                      Fence::merge("LayerRelease", releaseFence, frame.clientTargetAcquireFence);
          }
@@ -87,7 +87,7 @@ index f9ed92d1ee..34773de107 100644
      }
  
      // We've got a list of layers needing fences, that are disjoint with
-@@ -1672,7 +1678,12 @@ void Output::presentFrameAndReleaseLayers(bool flushEvenWhenDisabled) {
+@@ -1685,7 +1691,12 @@ void Output::presentFrameAndReleaseLayers(bool flushEvenWhenDisabled) {
      // supply them with the present fence.
      for (auto& weakLayer : mReleasedLayers) {
          if (const auto layer = weakLayer.promote()) {
@@ -102,7 +102,7 @@ index f9ed92d1ee..34773de107 100644
      }
  
 diff --git a/services/surfaceflinger/CompositionEngine/tests/CompositionEngineTest.cpp b/services/surfaceflinger/CompositionEngine/tests/CompositionEngineTest.cpp
-index 3e0c390a5d..deb90deaf7 100644
+index 3e0c390..deb90de 100644
 --- a/services/surfaceflinger/CompositionEngine/tests/CompositionEngineTest.cpp
 +++ b/services/surfaceflinger/CompositionEngine/tests/CompositionEngineTest.cpp
 @@ -29,6 +29,8 @@
@@ -125,7 +125,7 @@ index 3e0c390a5d..deb90deaf7 100644
              .WillOnce(Return(LayerFE::ReleaseFencePromiseStatus::FULFILLED));
      EXPECT_CALL(*mLayer2FE, getReleaseFencePromiseStatus)
 diff --git a/services/surfaceflinger/CompositionEngine/tests/OutputTest.cpp b/services/surfaceflinger/CompositionEngine/tests/OutputTest.cpp
-index 442b603ca0..eb7f0ddc37 100644
+index 442b603..eb7f0dd 100644
 --- a/services/surfaceflinger/CompositionEngine/tests/OutputTest.cpp
 +++ b/services/surfaceflinger/CompositionEngine/tests/OutputTest.cpp
 @@ -35,6 +35,7 @@
@@ -296,7 +296,7 @@ index 442b603ca0..eb7f0ddc37 100644
      mOutput.mState.usesClientComposition = true;
  
 diff --git a/services/surfaceflinger/Layer.cpp b/services/surfaceflinger/Layer.cpp
-index 195461f47e..a8e60f1632 100644
+index 195461f..a8e60f1 100644
 --- a/services/surfaceflinger/Layer.cpp
 +++ b/services/surfaceflinger/Layer.cpp
 @@ -805,6 +805,54 @@ void Layer::prepareReleaseCallbacks(ftl::Future<FenceResult> futureFenceResult,
@@ -379,7 +379,7 @@ index 195461f47e..a8e60f1632 100644
              // Store so latched time and release fence can be set
              mDrawingState.callbackHandles.push_back(handle);
 diff --git a/services/surfaceflinger/Layer.h b/services/surfaceflinger/Layer.h
-index c234a75693..c4ffe1ef2d 100644
+index c234a75..c4ffe1e 100644
 --- a/services/surfaceflinger/Layer.h
 +++ b/services/surfaceflinger/Layer.h
 @@ -261,6 +261,8 @@ public:
@@ -413,7 +413,7 @@ index c234a75693..c4ffe1ef2d 100644
      // callback. A release callback may not be given when capturing
      // screenshots asynchronously. There may be no buffer update for the
 diff --git a/services/surfaceflinger/LayerFE.cpp b/services/surfaceflinger/LayerFE.cpp
-index fea7671af2..de64b271f5 100644
+index fea7671..de64b27 100644
 --- a/services/surfaceflinger/LayerFE.cpp
 +++ b/services/surfaceflinger/LayerFE.cpp
 @@ -26,6 +26,7 @@
@@ -435,7 +435,7 @@ index fea7671af2..de64b271f5 100644
      }
  }
 diff --git a/services/surfaceflinger/RegionSamplingThread.cpp b/services/surfaceflinger/RegionSamplingThread.cpp
-index 011fd9e20a..06c2f26a6d 100644
+index 011fd9e..06c2f26 100644
 --- a/services/surfaceflinger/RegionSamplingThread.cpp
 +++ b/services/surfaceflinger/RegionSamplingThread.cpp
 @@ -355,7 +355,7 @@ void RegionSamplingThread::captureSample() {
@@ -448,10 +448,10 @@ index 011fd9e20a..06c2f26a6d 100644
          auto displayState = mFlinger.getSnapshotsFromMainThread(renderAreaBuilder,
                                                                  getLayerSnapshotsFn, layerFEs);
 diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
-index 340243fd88..7bea102ab0 100644
+index 10948eb..f8c8b72 100644
 --- a/services/surfaceflinger/SurfaceFlinger.cpp
 +++ b/services/surfaceflinger/SurfaceFlinger.cpp
-@@ -2821,6 +2821,16 @@ CompositeResultsPerDisplay SurfaceFlinger::composite(
+@@ -2831,6 +2831,16 @@ CompositeResultsPerDisplay SurfaceFlinger::composite(
              compositionengine::Feature::kSnapshotLayerMetadata);
  
      refreshArgs.bufferIdsToUncache = std::move(mBufferIdsToUncache);
@@ -468,7 +468,7 @@ index 340243fd88..7bea102ab0 100644
      refreshArgs.outputColorSetting = mDisplayColorSetting;
      refreshArgs.forceOutputColorMode = mForceColorMode;
  
-@@ -2884,38 +2894,54 @@ CompositeResultsPerDisplay SurfaceFlinger::composite(
+@@ -2894,38 +2904,54 @@ CompositeResultsPerDisplay SurfaceFlinger::composite(
          layer->onPreComposition(refreshArgs.refreshStartTime);
      }
  
@@ -550,7 +550,7 @@ index 340243fd88..7bea102ab0 100644
          }
      }
  
-@@ -3197,8 +3223,13 @@ void SurfaceFlinger::onCompositionPresented(PhysicalDisplayId pacesetterId,
+@@ -3207,8 +3233,13 @@ void SurfaceFlinger::onCompositionPresented(PhysicalDisplayId pacesetterId,
              auto optDisplay = layerStackToDisplay.get(layerStack);
              if (optDisplay && !optDisplay->get()->isVirtual()) {
                  auto fence = getHwComposer().getPresentFence(optDisplay->get()->getPhysicalId());
@@ -566,7 +566,7 @@ index 340243fd88..7bea102ab0 100644
              }
          }
          layer->releasePendingBuffer(presentTime.ns());
-@@ -7383,7 +7414,8 @@ void SurfaceFlinger::captureScreenCommon(RenderAreaBuilderVariant renderAreaBuil
+@@ -7414,7 +7445,8 @@ void SurfaceFlinger::captureScreenCommon(RenderAreaBuilderVariant renderAreaBuil
          return;
      }
  
@@ -576,7 +576,7 @@ index 340243fd88..7bea102ab0 100644
          std::vector<sp<LayerFE>> layerFEs;
          auto displayState =
                  getSnapshotsFromMainThread(renderAreaBuilder, getLayerSnapshotsFn, layerFEs);
-@@ -7624,8 +7656,10 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::captureScreenshotLegacy(
+@@ -7655,8 +7687,10 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::captureScreenshotLegacy(
      auto takeScreenshotFn = [=, this, renderAreaBuilder = std::move(renderAreaBuilder)]() REQUIRES(
                                      kMainThreadContext) mutable -> ftl::SharedFuture<FenceResult> {
          auto layers = getLayerSnapshotsFn();
@@ -589,7 +589,7 @@ index 340243fd88..7bea102ab0 100644
          }
          auto displayState = getDisplayStateFromRenderAreaBuilder(renderAreaBuilder);
  
-@@ -7822,13 +7856,36 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::renderScreenImpl(
+@@ -7853,13 +7887,36 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::renderScreenImpl(
      // TODO(b/196334700) Once we use RenderEngineThreaded everywhere we can always defer the call
      // to CompositionEngine::present.
      ftl::SharedFuture<FenceResult> presentFuture;
@@ -628,7 +628,7 @@ index 340243fd88..7bea102ab0 100644
  }
  
 diff --git a/services/surfaceflinger/TransactionCallbackInvoker.cpp b/services/surfaceflinger/TransactionCallbackInvoker.cpp
-index b22ec66819..cc79acbbf5 100644
+index b22ec66..cc79acb 100644
 --- a/services/surfaceflinger/TransactionCallbackInvoker.cpp
 +++ b/services/surfaceflinger/TransactionCallbackInvoker.cpp
 @@ -28,6 +28,7 @@
@@ -657,7 +657,7 @@ index b22ec66819..cc79acbbf5 100644
  
          handle->previousReleaseFence = prevFence;
 diff --git a/services/surfaceflinger/TransactionCallbackInvoker.h b/services/surfaceflinger/TransactionCallbackInvoker.h
-index 178ddbbe79..9c7bb0d588 100644
+index 178ddbb..9c7bb0d 100644
 --- a/services/surfaceflinger/TransactionCallbackInvoker.h
 +++ b/services/surfaceflinger/TransactionCallbackInvoker.h
 @@ -43,6 +43,7 @@ public:
@@ -669,7 +669,7 @@ index 178ddbbe79..9c7bb0d588 100644
      nsecs_t latchTime = -1;
      std::optional<uint32_t> transformHint = std::nullopt;
 diff --git a/services/surfaceflinger/common/FlagManager.cpp b/services/surfaceflinger/common/FlagManager.cpp
-index 5c417ba748..b86e815b57 100644
+index 5c417ba..b86e815 100644
 --- a/services/surfaceflinger/common/FlagManager.cpp
 +++ b/services/surfaceflinger/common/FlagManager.cpp
 @@ -167,6 +167,8 @@ void FlagManager::dump(std::string& result) const {
@@ -691,7 +691,7 @@ index 5c417ba748..b86e815b57 100644
  /// Trunk stable server (R/W) flags ///
  FLAG_MANAGER_ACONFIG_FLAG(refresh_rate_overlay_on_external_display, "")
 diff --git a/services/surfaceflinger/common/include/common/FlagManager.h b/services/surfaceflinger/common/include/common/FlagManager.h
-index 15284ba0ee..4766f6be38 100644
+index 15284ba..4766f6b 100644
 --- a/services/surfaceflinger/common/include/common/FlagManager.h
 +++ b/services/surfaceflinger/common/include/common/FlagManager.h
 @@ -74,6 +74,7 @@ public:
@@ -711,7 +711,7 @@ index 15284ba0ee..4766f6be38 100644
      bool graphite_renderengine() const;
      bool filter_frames_before_trace_starts() const;
 diff --git a/services/surfaceflinger/tests/TransactionTestHarnesses.h b/services/surfaceflinger/tests/TransactionTestHarnesses.h
-index c95c875746..5899c7e8b6 100644
+index c95c875..5899c7e 100644
 --- a/services/surfaceflinger/tests/TransactionTestHarnesses.h
 +++ b/services/surfaceflinger/tests/TransactionTestHarnesses.h
 @@ -17,6 +17,7 @@
@@ -751,5 +751,5 @@ index c95c875746..5899c7e8b6 100644
                  return sc;
          }
 -- 
-2.43.0
+2.34.1
 

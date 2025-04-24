@@ -1,4 +1,4 @@
-From 4de0edc9a5a68c4529677c56e3b618d3e208819a Mon Sep 17 00:00:00 2001
+From 1271c0485b0318d22d5edec57dab3f189ef128eb Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Fri, 29 Nov 2024 20:11:52 -0500
 Subject: [PATCH 24/24] Tell Unihertz/Agold we are not a GSI. Fixes aux cam on
@@ -10,7 +10,7 @@ Subject: [PATCH 24/24] Tell Unihertz/Agold we are not a GSI. Fixes aux cam on
  2 files changed, 11 insertions(+)
 
 diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
-index ecd54db749..ce9422948a 100644
+index 4ba0552..2c7101f 100644
 --- a/services/camera/libcameraservice/Android.bp
 +++ b/services/camera/libcameraservice/Android.bp
 @@ -115,6 +115,7 @@ cc_defaults {
@@ -22,7 +22,7 @@ index ecd54db749..ce9422948a 100644
          "vendor.samsung.hardware.camera.provider@4.0",
          "vendor.samsung.hardware.camera.provider-V1-ndk",
 diff --git a/services/camera/libcameraservice/common/aidl/AidlProviderInfo.cpp b/services/camera/libcameraservice/common/aidl/AidlProviderInfo.cpp
-index 9f8fd37e1d..611920b882 100644
+index 9f8fd37..611920b 100644
 --- a/services/camera/libcameraservice/common/aidl/AidlProviderInfo.cpp
 +++ b/services/camera/libcameraservice/common/aidl/AidlProviderInfo.cpp
 @@ -35,6 +35,7 @@
@@ -50,5 +50,5 @@ index 9f8fd37e1d..611920b882 100644
      if (res != OK) {
          ALOGE("%s: Unable to set up vendor tags from provider '%s'",
 -- 
-2.43.0
+2.34.1
 

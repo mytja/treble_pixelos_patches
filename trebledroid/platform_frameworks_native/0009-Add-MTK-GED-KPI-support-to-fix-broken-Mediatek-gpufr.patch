@@ -1,4 +1,4 @@
-From 89605a19989e753ac8afe57190ed96eb6db81268 Mon Sep 17 00:00:00 2001
+From e35bddc2ade337ee7a09e2632fa25091f9e9b847 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 25 Nov 2023 08:15:28 -0500
 Subject: [PATCH 09/19] Add MTK GED KPI support to fix broken Mediatek gpufreq
@@ -24,7 +24,7 @@ Change-Id: Ic29a231ea8651efd598083611197aaa9e3c1fbbe
  2 files changed, 205 insertions(+)
 
 diff --git a/libs/gui/Surface.cpp b/libs/gui/Surface.cpp
-index e41f9bbf43..d6863467a3 100644
+index e41f9bb..d686346 100644
 --- a/libs/gui/Surface.cpp
 +++ b/libs/gui/Surface.cpp
 @@ -26,6 +26,9 @@
@@ -279,7 +279,7 @@ index e41f9bbf43..d6863467a3 100644
          mConnectedToCpu = true;
          // Clear the dirty region in case we're switching from a non-CPU API
 diff --git a/libs/gui/include/gui/Surface.h b/libs/gui/include/gui/Surface.h
-index 14a351316d..e0843a8016 100644
+index 14a3513..e0843a8 100644
 --- a/libs/gui/include/gui/Surface.h
 +++ b/libs/gui/include/gui/Surface.h
 @@ -742,6 +742,9 @@ protected:
@@ -293,5 +293,5 @@ index 14a351316d..e0843a8016 100644
  
  } // namespace android
 -- 
-2.43.0
+2.34.1
 

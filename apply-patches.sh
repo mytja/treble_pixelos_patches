@@ -14,6 +14,7 @@ for project in $(cd $patches/patches/$tree; echo *); do
     for patch in $patches/patches/$tree/$project/*.patch; do
         git am --reject $patch || read -p "--- Patch $patch needs manual application. Waiting for the patch to be applied."
     done
+    git tag "$tree"
     popd &>/dev/null
 done
 

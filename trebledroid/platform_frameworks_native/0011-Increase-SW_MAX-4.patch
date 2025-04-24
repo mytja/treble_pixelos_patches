@@ -1,4 +1,4 @@
-From 2eaa563eee85a59eda9575a44886054757eeb797 Mon Sep 17 00:00:00 2001
+From 65a8f5873eb66eb94c85ad049a901d4a3e31b1f8 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 3 Feb 2024 07:38:33 -0500
 Subject: [PATCH 11/19] Increase SW_MAX *= 4
@@ -14,7 +14,7 @@ We increase the size of SW_MAX for two reasons:
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/services/inputflinger/reader/EventHub.cpp b/services/inputflinger/reader/EventHub.cpp
-index 552b512fb4..13a8ad21c1 100644
+index 552b512..13a8ad2 100644
 --- a/services/inputflinger/reader/EventHub.cpp
 +++ b/services/inputflinger/reader/EventHub.cpp
 @@ -1136,7 +1136,7 @@ int32_t EventHub::getKeyCodeForKeyLocation(int32_t deviceId, int32_t locationKey
@@ -36,7 +36,7 @@ index 552b512fb4..13a8ad21c1 100644
              device->classes |= InputDeviceClass::SWITCH;
              break;
 diff --git a/services/inputflinger/reader/include/EventHub.h b/services/inputflinger/reader/include/EventHub.h
-index 5839b4c41c..75e99a1265 100644
+index 5839b4c..75e99a1 100644
 --- a/services/inputflinger/reader/include/EventHub.h
 +++ b/services/inputflinger/reader/include/EventHub.h
 @@ -644,8 +644,8 @@ private:
@@ -51,5 +51,5 @@ index 5839b4c41c..75e99a1265 100644
          BitArray<FF_CNT> ffBitmask;
          BitArray<INPUT_PROP_CNT> propBitmask;
 -- 
-2.43.0
+2.34.1
 

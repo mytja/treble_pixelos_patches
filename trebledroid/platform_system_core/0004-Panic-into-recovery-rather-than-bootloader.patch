@@ -1,7 +1,7 @@
-From 76a0e1b944502fd43c97e7dd424611cdac0589dd Mon Sep 17 00:00:00 2001
+From 2fd47bd1fc4e8e14b3cd02b6d01f041bd58eb189 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 4 Sep 2019 21:11:48 +0200
-Subject: [PATCH 04/28] Panic into recovery rather than bootloader
+Subject: [PATCH 04/27] Panic into recovery rather than bootloader
 
 Getting last_kmsg/pstore from bootloader isn't possible for other people
 than the OEM, but we have TWRP to access last_kmsg/pstore
@@ -12,7 +12,7 @@ Change-Id: If04bb6572dc66677d7b44f7d302b2d69ce526200
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/init/reboot_utils.cpp b/init/reboot_utils.cpp
-index 547b1869f..dd0fbbfe8 100644
+index 547b186..dd0fbbf 100644
 --- a/init/reboot_utils.cpp
 +++ b/init/reboot_utils.cpp
 @@ -37,7 +37,7 @@
@@ -25,5 +25,5 @@ index 547b1869f..dd0fbbfe8 100644
  
  // this needs to read the /proc/* files directly because it is called before
 -- 
-2.43.0
+2.34.1
 

@@ -1,4 +1,4 @@
-From 5f1567f760f518b73ffc01b1709a3383aa8188e8 Mon Sep 17 00:00:00 2001
+From b22cf33ec5bf53af6ff4add32de3ef47407d757d Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Wed, 7 Aug 2024 08:58:45 +0000
 Subject: [PATCH 2/5] Prefer Aperture over Camera2
@@ -8,12 +8,12 @@ Subject: [PATCH 2/5] Prefer Aperture over Camera2
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/product/handheld_product.mk b/target/product/handheld_product.mk
-index b2ce4c5..3864555 100644
+index 8d73d4e..e789220 100644
 --- a/target/product/handheld_product.mk
 +++ b/target/product/handheld_product.mk
 @@ -35,7 +35,7 @@ PRODUCT_PACKAGES += \
  
- ifeq ($(LINEAGE_BUILD),)
+ ifeq ($(CUSTOM_BUILD),)
  PRODUCT_PACKAGES += \
 -    Camera2 \
 +    Aperture \

@@ -1,4 +1,4 @@
-From 7485c9ccd486057ba0bb6260ec7257b8fc6a122b Mon Sep 17 00:00:00 2001
+From 72a2e85cf44dcd289a288804faef06396d76d52e Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Sun, 16 Mar 2025 13:25:10 -0400
 Subject: [PATCH 19/19] Revert "Remove dead code from LayerFE"
@@ -14,7 +14,7 @@ Change-Id: If3af99ec76a8c595dcd1ea22965f2d126d74a315
  4 files changed, 15 insertions(+)
 
 diff --git a/services/surfaceflinger/CompositionEngine/include/compositionengine/LayerFE.h b/services/surfaceflinger/CompositionEngine/include/compositionengine/LayerFE.h
-index cda4edc216..8199c929e5 100644
+index cda4edc..8199c92 100644
 --- a/services/surfaceflinger/CompositionEngine/include/compositionengine/LayerFE.h
 +++ b/services/surfaceflinger/CompositionEngine/include/compositionengine/LayerFE.h
 @@ -148,6 +148,9 @@ public:
@@ -28,7 +28,7 @@ index cda4edc216..8199c929e5 100644
      // fence. This should only be called when a promise has not yet been created, or
      // after the previous promise has already been fulfilled. Attempting to call this
 diff --git a/services/surfaceflinger/CompositionEngine/include/compositionengine/mock/LayerFE.h b/services/surfaceflinger/CompositionEngine/include/compositionengine/mock/LayerFE.h
-index 272fa3eef7..a236ebf180 100644
+index 272fa3e..a236ebf 100644
 --- a/services/surfaceflinger/CompositionEngine/include/compositionengine/mock/LayerFE.h
 +++ b/services/surfaceflinger/CompositionEngine/include/compositionengine/mock/LayerFE.h
 @@ -50,6 +50,9 @@ public:
@@ -42,7 +42,7 @@ index 272fa3eef7..a236ebf180 100644
      MOCK_METHOD1(setReleaseFence, void(const FenceResult&));
      MOCK_METHOD0(getReleaseFencePromiseStatus, LayerFE::ReleaseFencePromiseStatus());
 diff --git a/services/surfaceflinger/LayerFE.cpp b/services/surfaceflinger/LayerFE.cpp
-index de64b271f5..012aa32c30 100644
+index de64b27..012aa32 100644
 --- a/services/surfaceflinger/LayerFE.cpp
 +++ b/services/surfaceflinger/LayerFE.cpp
 @@ -28,6 +28,7 @@
@@ -66,7 +66,7 @@ index de64b271f5..012aa32c30 100644
      return mName.c_str();
  }
 diff --git a/services/surfaceflinger/LayerFE.h b/services/surfaceflinger/LayerFE.h
-index 9483aebafa..ce6d27a91a 100644
+index 9483aeb..ce6d27a 100644
 --- a/services/surfaceflinger/LayerFE.h
 +++ b/services/surfaceflinger/LayerFE.h
 @@ -25,12 +25,14 @@
@@ -93,5 +93,5 @@ index 9483aebafa..ce6d27a91a 100644
      int32_t getSequence() const override;
      bool hasRoundedCorners() const override;
 -- 
-2.43.0
+2.34.1
 

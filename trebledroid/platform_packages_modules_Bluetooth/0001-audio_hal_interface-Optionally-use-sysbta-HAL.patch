@@ -1,4 +1,4 @@
-From 432925664a271819a6d5821908363d92ee10a5ab Mon Sep 17 00:00:00 2001
+From f3b4ec39723bd0fb26e5e74877614060c65e1a20 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Wed, 24 Aug 2022 15:45:18 -0400
 Subject: [PATCH 1/8] audio_hal_interface: Optionally use sysbta HAL
@@ -15,7 +15,7 @@ Change-Id: I59973e6ec84c5923be8a7c67b36b2e237f000860
  5 files changed, 31 insertions(+), 10 deletions(-)
 
 diff --git a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.cc b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.cc
-index f022ec3ea2..283beb22fa 100644
+index f022ec3..283beb2 100644
 --- a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.cc
 +++ b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.cc
 @@ -58,7 +58,7 @@ BluetoothAudioClientInterface::~BluetoothAudioClientInterface() {
@@ -55,7 +55,7 @@ index f022ec3ea2..283beb22fa 100644
      if (provider_factory == nullptr) {
        log::error("can't get capability from unknown factory");
 diff --git a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
-index a45ff946f2..4c99832e1b 100644
+index a45ff94..4c99832 100644
 --- a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
 +++ b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
 @@ -28,6 +28,7 @@
@@ -80,7 +80,7 @@ index a45ff946f2..4c99832e1b 100644
  private:
    IBluetoothTransportInstance* transport_;
 diff --git a/system/audio_hal_interface/aidl/client_interface_aidl.cc b/system/audio_hal_interface/aidl/client_interface_aidl.cc
-index 176b355eeb..9d8ddd2cac 100644
+index 176b355..9d8ddd2 100644
 --- a/system/audio_hal_interface/aidl/client_interface_aidl.cc
 +++ b/system/audio_hal_interface/aidl/client_interface_aidl.cc
 @@ -69,7 +69,7 @@ BluetoothAudioClientInterface::BluetoothAudioClientInterface(IBluetoothTransport
@@ -120,7 +120,7 @@ index 176b355eeb..9d8ddd2cac 100644
      if (provider_factory == nullptr) {
        log::error("can't get capability from unknown factory");
 diff --git a/system/audio_hal_interface/aidl/client_interface_aidl.h b/system/audio_hal_interface/aidl/client_interface_aidl.h
-index a3c60384ab..ee5901e32a 100644
+index a3c6038..ee5901e 100644
 --- a/system/audio_hal_interface/aidl/client_interface_aidl.h
 +++ b/system/audio_hal_interface/aidl/client_interface_aidl.h
 @@ -29,6 +29,7 @@
@@ -145,7 +145,7 @@ index a3c60384ab..ee5901e32a 100644
  private:
    IBluetoothTransportInstance* transport_;
 diff --git a/system/audio_hal_interface/hal_version_manager.cc b/system/audio_hal_interface/hal_version_manager.cc
-index f9843df858..3931bc6a8d 100644
+index f9843df..3931bc6 100644
 --- a/system/audio_hal_interface/hal_version_manager.cc
 +++ b/system/audio_hal_interface/hal_version_manager.cc
 @@ -20,6 +20,7 @@
@@ -188,5 +188,5 @@ index f9843df858..3931bc6a8d 100644
      hal_transport_ = BluetoothAudioHalTransport::AIDL;
      return;
 -- 
-2.43.0
+2.34.1
 

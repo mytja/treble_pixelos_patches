@@ -1,4 +1,4 @@
-From 238459c9af0a1f2475d358a346587d5496da1e0b Mon Sep 17 00:00:00 2001
+From d595bc9998c0a819e6616daa94c5cf6619c53269 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sat, 18 Jan 2025 14:33:35 +0100
 Subject: [PATCH 5/5] Nuke QuickSearchBox and messaging
@@ -21,7 +21,7 @@ index 0d4e333..f326a00 100644
 -PRODUCT_PACKAGES += \
 -    messaging
 diff --git a/target/product/aosp_product.mk b/target/product/aosp_product.mk
-index 5dae7db..7c0a58c 100644
+index 6f08394..f1bca78 100644
 --- a/target/product/aosp_product.mk
 +++ b/target/product/aosp_product.mk
 @@ -32,7 +32,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
@@ -33,7 +33,7 @@ index 5dae7db..7c0a58c 100644
      preinstalled-packages-platform-aosp-product.xml \
      ThemePicker \
 diff --git a/target/product/handheld_product.mk b/target/product/handheld_product.mk
-index 3864555..fa884f9 100644
+index e789220..833d30c 100644
 --- a/target/product/handheld_product.mk
 +++ b/target/product/handheld_product.mk
 @@ -29,7 +29,6 @@ PRODUCT_PACKAGES += \

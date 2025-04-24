@@ -1,4 +1,4 @@
-From 085e596fcb18378f46e857d0efa8a7fdbbf958ea Mon Sep 17 00:00:00 2001
+From 98a3afbf26c348db0c295e84b3b416de31f91fea Mon Sep 17 00:00:00 2001
 From: WUKAWL <21525471@qq.com>
 Date: Thu, 3 Apr 2025 22:00:26 +0800
 Subject: [PATCH 15/19] Fix touch on MEIZU 21 Pro (#1)
@@ -17,7 +17,7 @@ Raw values from the panel are multiplied by 10, causing most touch events to fal
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/services/inputflinger/reader/mapper/accumulator/MultiTouchMotionAccumulator.cpp b/services/inputflinger/reader/mapper/accumulator/MultiTouchMotionAccumulator.cpp
-index 76ddfa8601..da7b059d77 100644
+index 76ddfa8..da7b059 100644
 --- a/services/inputflinger/reader/mapper/accumulator/MultiTouchMotionAccumulator.cpp
 +++ b/services/inputflinger/reader/mapper/accumulator/MultiTouchMotionAccumulator.cpp
 @@ -153,7 +153,7 @@ void MultiTouchMotionAccumulator::populateCurrentSlot(
@@ -30,7 +30,7 @@ index 76ddfa8601..da7b059d77 100644
      }
  }
 diff --git a/services/inputflinger/reader/mapper/accumulator/SingleTouchMotionAccumulator.cpp b/services/inputflinger/reader/mapper/accumulator/SingleTouchMotionAccumulator.cpp
-index 72d8cd3b3a..4c91b199c7 100644
+index 72d8cd3..4c91b19 100644
 --- a/services/inputflinger/reader/mapper/accumulator/SingleTouchMotionAccumulator.cpp
 +++ b/services/inputflinger/reader/mapper/accumulator/SingleTouchMotionAccumulator.cpp
 @@ -27,7 +27,7 @@ SingleTouchMotionAccumulator::SingleTouchMotionAccumulator() {
@@ -43,5 +43,5 @@ index 72d8cd3b3a..4c91b199c7 100644
      }
  }
 -- 
-2.43.0
+2.34.1
 
