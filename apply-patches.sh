@@ -10,6 +10,7 @@ for project in $(cd $patches/patches/$tree; echo *); do
     [ "$p" == build ] && p=build/make
     [ "$p" == treble/app ] && p=treble_app
     [ "$p" == vendor/hardware/overlay ] && p=vendor/hardware_overlay
+    echo "### APPLYING $p PATCHES"
     pushd $p &>/dev/null
     git tag -d "$tree" || true     # Silently delete a tag
     for patch in $patches/patches/$tree/$project/*.patch; do
