@@ -1,4 +1,4 @@
-From f4b737a6aa367dc001aa38c3765e3b0da3050def Mon Sep 17 00:00:00 2001
+From 46d4c85921f7f297ff2d10d79a73ad06bcbc621d Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 25 Feb 2024 10:23:29 -0500
 Subject: [PATCH 09/10] When reading SMSC, ignore invalid SMSC

@@ -1,4 +1,4 @@
-From 47dd4781c945abbec03aaf90b1dc6a45eb22039b Mon Sep 17 00:00:00 2001
+From 038e80990af1cb10980a99eeebb939c972978119 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Sun, 16 Mar 2025 13:24:30 -0400
 Subject: [PATCH 18/19] Revert "Remove release fence flags"

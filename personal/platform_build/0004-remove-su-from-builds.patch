@@ -1,4 +1,4 @@
-From c38b100ec3c0df5395b39de81d5c227cc0e4f06a Mon Sep 17 00:00:00 2001
+From 58228c97a7485c74240fd943c431bb19e0bd2092 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Fri, 20 Sep 2024 17:24:51 +0200
 Subject: [PATCH 4/5] remove su from builds

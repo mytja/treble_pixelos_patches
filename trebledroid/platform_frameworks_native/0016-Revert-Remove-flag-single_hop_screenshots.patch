@@ -1,4 +1,4 @@
-From ce0328f4a0ee721cc97cf65292e972528550952f Mon Sep 17 00:00:00 2001
+From 3dc6d097c26fb8793ccdbe61b7852f09d6c6f8a4 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Sun, 16 Mar 2025 12:54:56 -0400
 Subject: [PATCH 16/19] Revert "Remove flag single_hop_screenshots"

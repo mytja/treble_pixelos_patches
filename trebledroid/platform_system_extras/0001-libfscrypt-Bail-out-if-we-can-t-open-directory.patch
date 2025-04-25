@@ -1,4 +1,4 @@
-From 9b56f0adf0110fd1c7fd6ffa35b0cc26b0632af2 Mon Sep 17 00:00:00 2001
+From 5478bac89a2c29dbf79cd3e87a093553cbe923e7 Mon Sep 17 00:00:00 2001
 From: Luca Stefani <luca.stefani.ge1@gmail.com>
 Date: Wed, 9 Sep 2020 12:43:54 +0200
 Subject: [PATCH] libfscrypt: Bail out if we can't open directory

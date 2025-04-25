@@ -1,4 +1,4 @@
-From b2c908d62cf90153e4c4d9d94336c73a3a0d99c9 Mon Sep 17 00:00:00 2001
+From 88b005b45224f9455c51bf971b2fceb3edee9b92 Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Wed, 25 Dec 2019 12:34:05 +0200
 Subject: [PATCH 5/5] Rework securize tweak

@@ -1,4 +1,4 @@
-From 8f1311399183ba3e51bfcbf3fb066c853b27bce8 Mon Sep 17 00:00:00 2001
+From a477f5b61f6b7907369a2f0309de7b8cc195f8f1 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Mon, 21 Apr 2025 23:27:22 +0200
 Subject: [PATCH 9/9] allow for setting bottom status bar padding

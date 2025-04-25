@@ -1,4 +1,4 @@
-From 45e175f2520810de4dab3007ca199d66e04e6e14 Mon Sep 17 00:00:00 2001
+From 1af7b9bbc5c69a93af927cb2f32fa432322c05db Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 30 Mar 2025 17:47:05 +0200
 Subject: [PATCH 7/9] feat: Add Patch SMSC setting to Treble App

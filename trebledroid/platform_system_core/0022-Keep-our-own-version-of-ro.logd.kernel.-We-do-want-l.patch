@@ -1,4 +1,4 @@
-From 0c2de70cb0001664ab7ecd04945a8b32689fe97f Mon Sep 17 00:00:00 2001
+From 4e48cc33ba2457332b226442683321bdcab39b9b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 25 Nov 2023 09:51:14 -0500
 Subject: [PATCH 22/27] Keep our own version of ro.logd.kernel. We do want

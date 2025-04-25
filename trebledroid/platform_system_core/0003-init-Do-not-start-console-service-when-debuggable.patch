@@ -1,4 +1,4 @@
-From 50946a7ffe91cd3a63b0ac3a5d3d615269099b25 Mon Sep 17 00:00:00 2001
+From 56b4ba7e22b57cfb8394e591432e1686d733aa32 Mon Sep 17 00:00:00 2001
 From: Isaac Chen <tingyi364@gmail.com>
 Date: Wed, 23 Jun 2021 13:07:30 +0800
 Subject: [PATCH 03/27] init: Do not start console service when debuggable

@@ -1,4 +1,4 @@
-From a5944db2ad02b0657e6c8c8580dce2675ab70894 Mon Sep 17 00:00:00 2001
+From 2b7983d55df30c5229f15ab239c96bedd3c067dd Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 13 Mar 2021 14:20:03 -0500
 Subject: [PATCH 14/24] Support Samsung R multi-cams

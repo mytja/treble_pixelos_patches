@@ -1,7 +1,7 @@
-From 910da821c95484fa0f8550997f260eb41dfa8386 Mon Sep 17 00:00:00 2001
+From 00e915329e4ce943caa7737f55890b69e1e1bf23 Mon Sep 17 00:00:00 2001
 From: Moheshwar Amarnath Biswas <fluentmoheshwar@outlook.com>
 Date: Tue, 4 Feb 2025 01:14:49 +0600
-Subject: [PATCH] added infinix hot 30 overlay
+Subject: [PATCH 2/2] added infinix hot 30 overlay
 
 Also includes commit(s):
 fix: update package name and properties for Infinix Hot30 overlay

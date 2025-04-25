@@ -1,4 +1,4 @@
-From 3ebda8f94693082e2c77a2d44405dde8734ab6aa Mon Sep 17 00:00:00 2001
+From da2882884769614eb2aadc0fe732e2bcb0a6612f Mon Sep 17 00:00:00 2001
 From: Andy CrossGate Yan <GeForce8800Ultra@gmail.com>
 Date: Thu, 5 Apr 2018 10:01:19 +0800
 Subject: [PATCH 01/48] Disable vendor mismatch warning

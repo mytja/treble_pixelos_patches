@@ -1,4 +1,4 @@
-From 98a3afbf26c348db0c295e84b3b416de31f91fea Mon Sep 17 00:00:00 2001
+From 2c519cc241290d1228fc982ccbf7c568b144f6b6 Mon Sep 17 00:00:00 2001
 From: WUKAWL <21525471@qq.com>
 Date: Thu, 3 Apr 2025 22:00:26 +0800
 Subject: [PATCH 15/19] Fix touch on MEIZU 21 Pro (#1)
