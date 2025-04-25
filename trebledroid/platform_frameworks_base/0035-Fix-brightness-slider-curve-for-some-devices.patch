@@ -1,20 +1,24 @@
-From 9bcaa6a59279ef5867a9b3257fd8dcecc5926820 Mon Sep 17 00:00:00 2001
+From 1570c3d5f4e03b368507de7a8234cf2bd9d29e34 Mon Sep 17 00:00:00 2001
 From: ChonDoit <thphantomblog@gmail.com>
 Date: Thu, 24 Aug 2023 15:58:15 -0300
 Subject: [PATCH 35/48] Fix brightness slider curve for some devices
 
 Some devices report max brightness as 2047 or 4095
 ---
- .../settingslib/display/BrightnessUtils.java       | 11 ++++++-----
+ .../settingslib/display/BrightnessUtils.java       | 13 ++++++++-----
  .../brightness/shared/model/GammaBrightness.kt     | 14 +++++++-------
- 2 files changed, 13 insertions(+), 12 deletions(-)
+ 2 files changed, 15 insertions(+), 12 deletions(-)
 
 diff --git a/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java b/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
-index 3c06f8ae9..ae1566077 100644
+index 3c06f8ae9..afdb085dd 100644
 --- a/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
 +++ b/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
-@@ -21,12 +21,13 @@ import android.util.MathUtils;
+@@ -19,14 +19,17 @@ package com.android.settingslib.display;
+ import android.os.SystemProperties;
+ import android.util.MathUtils;
  
++import com.android.internal.display.BrightnessSynchronizer;
++
  /** Utility methods for calculating the display brightness. */
  public class BrightnessUtils {
 +    public static final boolean LowGammaBrightness = Boolean.parseBoolean(SystemProperties.get("persist.sys.phh.low_gamma_brightness", "false"));
@@ -28,7 +32,7 @@ index 3c06f8ae9..ae1566077 100644
  
      // Hybrid Log Gamma constant values
      private static final float R = 0.5f;
-@@ -102,9 +103,8 @@ public class BrightnessUtils {
+@@ -102,9 +105,8 @@ public class BrightnessUtils {
          // it shouldn't be out of bounds.
          final float normalizedRet = MathUtils.constrain(ret, 0, 12);
  
@@ -40,7 +44,7 @@ index 3c06f8ae9..ae1566077 100644
      }
  
      /**
-@@ -156,6 +156,7 @@ public class BrightnessUtils {
+@@ -156,6 +158,7 @@ public class BrightnessUtils {
              ret = A * MathUtils.log(normalizedVal - B) + C;
          }
  

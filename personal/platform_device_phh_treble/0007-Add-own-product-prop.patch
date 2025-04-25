@@ -1,0 +1,71 @@
+From 0c08b4181d6468f0f82b5b893a42f8a9ce89f9e6 Mon Sep 17 00:00:00 2001
+From: MisterZtr <andey2004586@gmail.com>
+Date: Fri, 18 Apr 2025 17:12:06 +0300
+Subject: [PATCH 7/7] Add own product prop
+
+---
+ product.prop | 52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 product.prop
+
+diff --git a/product.prop b/product.prop
+new file mode 100644
+index 0000000..0f09f17
+--- /dev/null
++++ b/product.prop
+@@ -0,0 +1,52 @@
++#Dalvik Hyperthread
++persist.sys.dalvik.multithread=true
++
++#Dalvik
++dalvik.vm.heapstartsize=16m
++dalvik.vm.heapgrowthlimit=320m
++dalvik.vm.heapsize=640m
++dalvik.vm.heapmaxfree=8m
++
++#Dexopt
++persist.bg.dexopt.enable=true
++pm.dexopt.bg-dexopt=everything
++dalvik.vm.dexopt-flags=v=n,o=a,u=y,m=y
++
++# IORap
++iorapd.readahead.enable=true
++ro.iorapd.enable=true
++
++# Render
++debug.hwui.renderer=skiavk
++ro.hwui.use_vulkan=1
++debug.composition.type=mdp
++persist.sys.composition.type=mdp
++debug.egl.force_msaa=0
++debug.egl.buffcount=4
++
++# Memory optimize
++persist.vendor.sys.memplus.enable=true
++
++# LMK
++ro.lmk.kill_timeout_ms=0
++ro.lmk.low=1001
++ro.lmk.psi_complete_stall_ms=700
++ro.lmk.psi_partial_stall_ms=70
++ro.lmk.thrashing_limit=100
++ro.lmk.thrashing_limit_decay=10
++ro.config.low_ram=false
++ro.lmk.use_minfree_levels=false
++ro.lmk.medium=900
++ro.lmk.critical_upgrade=false
++ro.lmk.enhance_batch_kill=false
++ro.lmk.enable_adaptive_lmk=false
++ro.lmk.use_minfree_levels=false
++ro.lmk.kill_heaviest_task=false
++ro.lmk.downgrade_pressure=100
++
++# Touch Improve
++windowsmgr.max_events_per_sec=90
++view.scroll_friction=0
++ro.min_pointer_dur=8
++debug.egl.hw=1
++video.accelerate.hw=1
+-- 
+2.34.1
+

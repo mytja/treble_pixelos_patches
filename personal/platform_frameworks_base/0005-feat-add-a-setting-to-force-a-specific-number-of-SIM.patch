@@ -1,4 +1,4 @@
-From 902bca578d39b1073dafe2ade77e1aee3e21e1f6 Mon Sep 17 00:00:00 2001
+From 7505774c83e91c65b38dedf2563ba35d506b1829 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 27 Oct 2024 20:32:36 +0100
 Subject: [PATCH 5/6] feat: add a setting to force a specific number of SIM
