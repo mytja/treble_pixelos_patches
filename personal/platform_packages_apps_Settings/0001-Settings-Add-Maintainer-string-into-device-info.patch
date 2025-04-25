@@ -1,4 +1,4 @@
-From 41e2047256fad2607e5ea0e3f5b92b1a97838a5b Mon Sep 17 00:00:00 2001
+From cf191cad61c85643dc56918dc4534dd3a991b5af Mon Sep 17 00:00:00 2001
 From: LuK1337 <priv.luk@gmail.com>
 Date: Mon, 24 Feb 2025 20:49:13 +0100
 Subject: [PATCH] Settings: Add Maintainer string into device info
@@ -16,7 +16,7 @@ Signed-off-by: mytja <mytja@proton.me>
 
 diff --git a/res/values/pos_strings.xml b/res/values/pos_strings.xml
 new file mode 100644
-index 00000000000..71ddd00dc2b
+index 0000000..52cb9d6
 --- /dev/null
 +++ b/res/values/pos_strings.xml
 @@ -0,0 +1,23 @@
@@ -44,7 +44,7 @@ index 00000000000..71ddd00dc2b
 +    <string name="build_maintainer_summary" translatable="false">mytja</string>
 +</resources>
 diff --git a/res/xml/firmware_version.xml b/res/xml/firmware_version.xml
-index cae2b8d34e5..83ecdd38be7 100644
+index cae2b8d..83ecdd3 100644
 --- a/res/xml/firmware_version.xml
 +++ b/res/xml/firmware_version.xml
 @@ -30,6 +30,14 @@
@@ -64,7 +64,7 @@ index cae2b8d34e5..83ecdd38be7 100644
          android:key="security_key"
 diff --git a/src/com/android/settings/deviceinfo/firmwareversion/PosBuildMaintainerPreferenceController.java b/src/com/android/settings/deviceinfo/firmwareversion/PosBuildMaintainerPreferenceController.java
 new file mode 100644
-index 00000000000..a5c16182795
+index 0000000..a5c1618
 --- /dev/null
 +++ b/src/com/android/settings/deviceinfo/firmwareversion/PosBuildMaintainerPreferenceController.java
 @@ -0,0 +1,44 @@
@@ -112,3 +112,6 @@ index 00000000000..a5c16182795
 +        return mDeviceMaintainer;
 +    }
 +}
+-- 
+2.34.1
+
