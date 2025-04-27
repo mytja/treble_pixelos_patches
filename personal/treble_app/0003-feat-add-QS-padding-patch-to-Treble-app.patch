@@ -1,4 +1,4 @@
-From 72cf1598f27bf7f15aaa8cc64fb823d8e90a5be8 Mon Sep 17 00:00:00 2001
+From 98bbaa1cfb1acad22384b8d9ba669d9ba6250264 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Fri, 11 Oct 2024 21:38:39 +0200
 Subject: [PATCH 3/9] feat: add QS padding patch to Treble app

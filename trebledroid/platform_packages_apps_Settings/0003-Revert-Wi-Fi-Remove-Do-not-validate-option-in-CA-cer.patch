@@ -1,4 +1,4 @@
-From 654c0e9a76d6ad7b4c735439aab944dee5f8472e Mon Sep 17 00:00:00 2001
+From 1eaeeb0b53a0165c4603d26479029a7d9f7c08b0 Mon Sep 17 00:00:00 2001
 From: TogoFire <italomellopereira@gmail.com>
 Date: Fri, 6 Aug 2021 08:54:07 -0300
 Subject: [PATCH 3/4] Revert "[Wi-Fi] Remove 'Do not validate' option in CA

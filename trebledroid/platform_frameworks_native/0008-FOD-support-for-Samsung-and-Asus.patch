@@ -1,4 +1,4 @@
-From 75f35c29bf5b8abf44a518f4a0925b7d9f112a69 Mon Sep 17 00:00:00 2001
+From c2a3818f3e2ef0f4d9707cddee666347751d70d8 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 18 Dec 2022 18:17:30 -0500
 Subject: [PATCH 08/19] FOD support for Samsung and Asus

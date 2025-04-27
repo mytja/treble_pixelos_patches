@@ -15,11 +15,14 @@ for project in $(cd $patches/patches/$tree; echo *); do
     if [[ "$tree" == "personal" ]]; then
         patch_start="trebledroid"
         if [[ ! $(git tag -l "$patch_start") ]]; then
+            patch_start="m/15.0"
+        fi
+        if [[ ! $(git tag -l "$patch_start") ]]; then
             patch_start="m/fifteen"
         fi
     fi
     git format-patch "$patch_start"
-    rm $patches/patches/$tree/$project/*.patch
+    rm $patches/patches/$tree/$project/*.patch || true
     mv *.patch $patches/patches/$tree/$project
     popd &>/dev/null
 done

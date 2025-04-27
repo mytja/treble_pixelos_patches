@@ -1,4 +1,4 @@
-From 67814f90c7bebef997b259932341806524b81b26 Mon Sep 17 00:00:00 2001
+From e102282467ca546824ab2c84f11f6e0edd62d58a Mon Sep 17 00:00:00 2001
 From: MisterZtr <andey2004586@gmail.com>
 Date: Sun, 8 Dec 2024 12:35:20 +0300
 Subject: [PATCH 6/7] base: providing a choice of additional vndk to build

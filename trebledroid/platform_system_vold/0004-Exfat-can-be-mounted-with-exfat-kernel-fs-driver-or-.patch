@@ -1,4 +1,4 @@
-From 5dd5d7946be425bc573c7d559351a6828c673c74 Mon Sep 17 00:00:00 2001
+From efd937455446695ae997dacf062125cbc18d8edf Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 18 Oct 2022 16:08:09 -0400
 Subject: [PATCH 4/5] Exfat can be mounted with "exfat" kernel fs driver, or

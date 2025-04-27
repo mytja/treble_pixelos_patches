@@ -1,4 +1,4 @@
-From 12c859609847eba94620bcab2db09f3cfa2c16b6 Mon Sep 17 00:00:00 2001
+From 5e37903df8ee2a389dbbf790b4a17cace3195e28 Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Thu, 20 Jun 2024 12:38:58 +0100
 Subject: [PATCH 6/7] Revert "netdupdatable: add back abort() on init() fail"

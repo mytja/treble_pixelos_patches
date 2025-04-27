@@ -1,4 +1,4 @@
-From 5668c1741dd8f457c2576c232f66aa82805a97f5 Mon Sep 17 00:00:00 2001
+From 82a1780eb6c42db79b9485c4321ced0d774b0bd8 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 27 May 2023 05:36:21 -0400
 Subject: [PATCH 13/27] watchdogd: Support pinging two watchdogs

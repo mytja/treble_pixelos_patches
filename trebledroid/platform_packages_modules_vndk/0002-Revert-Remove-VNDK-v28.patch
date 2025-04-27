@@ -1,4 +1,4 @@
-From 88d322a42e16ace52a0e1f5e770b81ad9b9003f5 Mon Sep 17 00:00:00 2001
+From 41dc062bb811477bf46d43608f88762c437fe2cf Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Tue, 25 Mar 2025 22:45:30 +0000
 Subject: [PATCH 2/2] Revert "Remove VNDK v28"

@@ -1,4 +1,4 @@
-From a86cff17d12dfd31042ddb539cd611976893897c Mon Sep 17 00:00:00 2001
+From 9e31fd359ba6a8dc83520cca14fc8e48f71cc238 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 3 Dec 2022 17:13:24 -0500
 Subject: [PATCH 26/48] Set old fingerprint sensors to security "strong"

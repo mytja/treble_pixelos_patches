@@ -1,4 +1,4 @@
-From ebe9e6ca90420001a0234afa6bc161fa6ba6432c Mon Sep 17 00:00:00 2001
+From 7d404a691265d9f7950badaa763a6d583a21a006 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 21 Feb 2024 12:41:46 -0500
 Subject: [PATCH 42/48] Include vendor.samsung.hardware.radio.network-V1-java

@@ -1,4 +1,4 @@
-From fada778850cbb9e56e7af0508126f59c7a22a886 Mon Sep 17 00:00:00 2001
+From d6309ab2e231a598db195c5e3a57731a2e7087d1 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 7 Feb 2024 05:06:32 -0500
 Subject: [PATCH 22/24] Include Samsung AIDL camera ids

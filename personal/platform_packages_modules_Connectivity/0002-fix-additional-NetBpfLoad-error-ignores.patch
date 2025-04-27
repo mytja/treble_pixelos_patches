@@ -1,4 +1,4 @@
-From bfd907ce548793f60f4ff7ae9675d0e469439d7a Mon Sep 17 00:00:00 2001
+From 87e750bfde418f24ae0e3dc5ba4dd0d857e1c068 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 30 Mar 2025 19:41:14 +0200
 Subject: [PATCH 2/2] fix: additional NetBpfLoad error ignores

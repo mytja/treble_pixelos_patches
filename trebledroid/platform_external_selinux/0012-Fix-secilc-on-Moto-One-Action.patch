@@ -1,4 +1,4 @@
-From 1fa965ef45e9b67815876b9298068636d7167e97 Mon Sep 17 00:00:00 2001
+From cf7fa15fef6136d1ffa64d0ecbd880a74c60101d Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 6 Jan 2025 16:07:53 -0500
 Subject: [PATCH 12/12] Fix secilc on Moto One Action

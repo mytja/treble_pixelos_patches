@@ -1,4 +1,4 @@
-From 08dc9dbbc100e0d1da2a47207376b3a65699c794 Mon Sep 17 00:00:00 2001
+From 567c448983b7fbdaa6dee6363b28b83ef96a0174 Mon Sep 17 00:00:00 2001
 From: ChonDoit <thphantomblog@gmail.com>
 Date: Fri, 25 Aug 2023 09:18:32 -0300
 Subject: [PATCH 2/9] Add options for status bar paddings

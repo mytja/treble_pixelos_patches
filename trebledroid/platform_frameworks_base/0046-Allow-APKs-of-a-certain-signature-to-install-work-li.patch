@@ -1,4 +1,4 @@
-From e31f662f74904b0a059dae83d80d5ca911073559 Mon Sep 17 00:00:00 2001
+From d45ce17c76254d8758fece7083e660a78566d61c Mon Sep 17 00:00:00 2001
 From: Andy CrossGate Yan <GeForce8800Ultra@gmail.com>
 Date: Sun, 7 Jul 2024 21:55:42 +0800
 Subject: [PATCH 46/48] Allow APKs of a certain signature to install/work like

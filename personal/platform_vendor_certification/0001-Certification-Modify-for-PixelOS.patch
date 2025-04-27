@@ -1,0 +1,56 @@
+From 754c62ee299d47ccd8e468a941e9c5caf7327655 Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Sun, 27 Apr 2025 14:11:52 +0200
+Subject: [PATCH] Certification: Modify for PixelOS
+
+---
+ config.mk                                            |  3 ++-
+ overlay/frameworks/base/core/res/Android.bp          |  5 +++++
+ overlay/frameworks/base/core/res/AndroidManifest.xml | 10 ++++++++++
+ 3 files changed, 17 insertions(+), 1 deletion(-)
+ create mode 100644 overlay/frameworks/base/core/res/Android.bp
+ create mode 100644 overlay/frameworks/base/core/res/AndroidManifest.xml
+
+diff --git a/config.mk b/config.mk
+index c7959f5..1d1cc82 100644
+--- a/config.mk
++++ b/config.mk
+@@ -12,4 +12,5 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/certification/overlay
++PRODUCT_PACKAGES += \
++    VendorCertificationOverlay
+\ No newline at end of file
+diff --git a/overlay/frameworks/base/core/res/Android.bp b/overlay/frameworks/base/core/res/Android.bp
+new file mode 100644
+index 0000000..e59e02d
+--- /dev/null
++++ b/overlay/frameworks/base/core/res/Android.bp
+@@ -0,0 +1,5 @@
++runtime_resource_overlay {
++    name: "VendorCertificationOverlay",
++    theme: "VendorCertificationOverlay",
++    product_specific: true,
++}
+diff --git a/overlay/frameworks/base/core/res/AndroidManifest.xml b/overlay/frameworks/base/core/res/AndroidManifest.xml
+new file mode 100644
+index 0000000..f5a5b22
+--- /dev/null
++++ b/overlay/frameworks/base/core/res/AndroidManifest.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.android.overlay.certification">
++
++    <application android:allowBackup="false"/>
++    <overlay
++        android:isStatic="true"
++        android:priority="852"
++        android:targetPackage="android" />
++</manifest>
+\ No newline at end of file
+-- 
+2.34.1
+
