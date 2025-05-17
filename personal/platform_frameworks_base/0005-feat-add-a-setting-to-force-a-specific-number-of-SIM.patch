@@ -1,7 +1,7 @@
-From 7c49121f4b212c3a667e53c554cc3bf01375ce83 Mon Sep 17 00:00:00 2001
+From 016507ee6aa7c018fd470df839575e44349f3b69 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 27 Oct 2024 20:32:36 +0100
-Subject: [PATCH 5/9] feat: add a setting to force a specific number of SIM
+Subject: [PATCH 05/16] feat: add a setting to force a specific number of SIM
  slots
 
 Some device models seemingly report a wrong number of SIM slots.
@@ -11,7 +11,7 @@ This patch should in combination with another one inside frameworks/base be a te
  1 file changed, 20 insertions(+)
 
 diff --git a/telephony/java/android/telephony/TelephonyManager.java b/telephony/java/android/telephony/TelephonyManager.java
-index 729240ba4..912d8b8ed 100644
+index 729240ba4ddf..912d8b8ed17b 100644
 --- a/telephony/java/android/telephony/TelephonyManager.java
 +++ b/telephony/java/android/telephony/TelephonyManager.java
 @@ -468,6 +468,8 @@ public class TelephonyManager {

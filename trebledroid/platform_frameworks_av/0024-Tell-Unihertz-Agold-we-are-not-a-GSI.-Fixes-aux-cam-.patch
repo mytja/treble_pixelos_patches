@@ -1,4 +1,4 @@
-From 26e9c199d6c51306f5783aee63d1f1b6213ea2b9 Mon Sep 17 00:00:00 2001
+From 7de5639d48e411229884f8348916f972a7869fa8 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Fri, 29 Nov 2024 20:11:52 -0500
 Subject: [PATCH 24/24] Tell Unihertz/Agold we are not a GSI. Fixes aux cam on
@@ -10,7 +10,7 @@ Subject: [PATCH 24/24] Tell Unihertz/Agold we are not a GSI. Fixes aux cam on
  2 files changed, 11 insertions(+)
 
 diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
-index 4ba0552..2c7101f 100644
+index 943c71b..05af0f9 100644
 --- a/services/camera/libcameraservice/Android.bp
 +++ b/services/camera/libcameraservice/Android.bp
 @@ -115,6 +115,7 @@ cc_defaults {

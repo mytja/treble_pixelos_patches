@@ -1,7 +1,7 @@
-From 8f8e4eeb54c6a59a862860d6481675d449bd8fd5 Mon Sep 17 00:00:00 2001
+From 9929d3a23d7a52febbd280e432610f63dc89ce82 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 5 Apr 2020 16:32:46 +0200
-Subject: [PATCH 10/48] Always allow overriding the number of work profiles
+Subject: [PATCH 10/51] Always allow overriding the number of work profiles
 
 Change-Id: I6eb09aa71663c6fbe7563e3038bffcabdba0ff6a
 ---
@@ -9,7 +9,7 @@ Change-Id: I6eb09aa71663c6fbe7563e3038bffcabdba0ff6a
  1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/services/core/java/com/android/server/pm/UserManagerService.java b/services/core/java/com/android/server/pm/UserManagerService.java
-index 066fce068..a3c16f842 100644
+index 066fce068d61..a3c16f8421d1 100644
 --- a/services/core/java/com/android/server/pm/UserManagerService.java
 +++ b/services/core/java/com/android/server/pm/UserManagerService.java
 @@ -8356,12 +8356,8 @@ public class UserManagerService extends IUserManager.Stub {

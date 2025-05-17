@@ -1,4 +1,4 @@
-From 674d26e05d177ccfa8b0a92af51fe75a1249dc31 Mon Sep 17 00:00:00 2001
+From 3fcb868a36afbf53d1454cd57f9e686687f258f6 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 19 Feb 2022 08:20:25 -0500
 Subject: [PATCH 2/2] Add new mechanism to fake vendor props on a per-process

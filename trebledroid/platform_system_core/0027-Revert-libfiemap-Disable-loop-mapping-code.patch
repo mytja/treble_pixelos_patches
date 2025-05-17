@@ -1,4 +1,4 @@
-From b3331bd3a1f6104deff91f28d5aecc7808cae62a Mon Sep 17 00:00:00 2001
+From c24d9e987d3a7fc6d02db4367e24c8b658a9f2da Mon Sep 17 00:00:00 2001
 From: signoreTNT <71853850+signoreTNT@users.noreply.github.com>
 Date: Wed, 12 Feb 2025 12:41:40 +0100
 Subject: [PATCH 27/27] Revert "libfiemap: Disable loop mapping code."

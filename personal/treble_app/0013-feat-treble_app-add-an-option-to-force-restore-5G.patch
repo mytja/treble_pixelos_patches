@@ -1,0 +1,58 @@
+From 58f0377e40ab38aafa8c5d70e9b8d6ebe354067b Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Sat, 17 May 2025 18:29:59 +0200
+Subject: [PATCH 13/13] feat(treble_app): add an option to force restore 5G
+
+Paired with a commit in frameworks/opt/telephony
+---
+ app/src/main/java/me/phh/treble/app/Samsung.kt         | 4 ++++
+ app/src/main/java/me/phh/treble/app/SamsungSettings.kt | 1 +
+ app/src/main/res/xml/pref_samsung.xml                  | 5 +++++
+ 3 files changed, 10 insertions(+)
+
+diff --git a/app/src/main/java/me/phh/treble/app/Samsung.kt b/app/src/main/java/me/phh/treble/app/Samsung.kt
+index 9456e30..ec29733 100644
+--- a/app/src/main/java/me/phh/treble/app/Samsung.kt
++++ b/app/src/main/java/me/phh/treble/app/Samsung.kt
+@@ -72,6 +72,10 @@ class Samsung: EntryStartup {
+                 val value = if(sp.getBoolean(key, false)) "1" else " 0"
+                 SystemProperties.set("persist.sys.phh.samsung_fingerprint", value)
+             }
++            SamsungSettings.restore5G -> {
++                val value = if(sp.getBoolean(key, false)) "1" else " 0"
++                SystemProperties.set("persist.sys.phh.force_restore_5g", value)
++            }
+             SamsungSettings.backlightMultiplier -> {
+                 val value = sp.getString(key, "-1")
+                 SystemProperties.set("persist.sys.phh.samsung_backlight", value)
+diff --git a/app/src/main/java/me/phh/treble/app/SamsungSettings.kt b/app/src/main/java/me/phh/treble/app/SamsungSettings.kt
+index f5e0cc9..7d7d041 100644
+--- a/app/src/main/java/me/phh/treble/app/SamsungSettings.kt
++++ b/app/src/main/java/me/phh/treble/app/SamsungSettings.kt
+@@ -9,6 +9,7 @@ object SamsungSettings : Settings {
+     val extraSensors = "key_samsung_extra_sensors"
+     val colorspace = "key_samsung_colorspace"
+     val brokenFingerprint = "key_samsung_broken_fingerprint"
++    val restore5G = "key_samsung_force_restore_5g"
+     val backlightMultiplier = "key_samsung_backlight_multiplier"
+     val cameraIds = "key_samsung_camera_ids"
+     val alternateAudioPolicy = "key_samsung_alternate_audio_policy"
+diff --git a/app/src/main/res/xml/pref_samsung.xml b/app/src/main/res/xml/pref_samsung.xml
+index a83bc13..844e0fa 100644
+--- a/app/src/main/res/xml/pref_samsung.xml
++++ b/app/src/main/res/xml/pref_samsung.xml
+@@ -63,6 +63,11 @@
+             android:defaultValue="false"
+             android:key="key_samsung_broken_fingerprint"
+             android:title="Enable workaround for broken fingerprint" />
++        <SwitchPreference
++            android:defaultValue="false"
++            android:key="key_samsung_force_restore_5g"
++            android:title="Forcibly restore 5G"
++            android:summary="Restores default 5G behaviour when any option with 5G is enabled.\nTurn on if 5G suddenly isn't working after forcing other network modes (such as 4G, 3G or 2G)." />
+         <EditTextPreference
+             android:defaultValue="-1"
+             android:key="key_samsung_backlight_multiplier"
+-- 
+2.34.1
+

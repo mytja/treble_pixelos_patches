@@ -1,7 +1,7 @@
-From 2693ee5c620e2e5fc55de04ae860088bc3c5047a Mon Sep 17 00:00:00 2001
+From 229c3d7dd79c3848c8024acbd3b86fd12c97d5d2 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 17 Jun 2023 08:31:55 -0400
-Subject: [PATCH 29/48] Add Mediatek power hints on touch
+Subject: [PATCH 29/51] Add Mediatek power hints on touch
 
 Mediatek has multiple HALs (which existed concurrently), so it is a bit
 of a mess.
@@ -27,7 +27,7 @@ Change-Id: I9f1eac5a20b98920a5d0c8204fe4d165ba069f5a
  2 files changed, 52 insertions(+), 1 deletion(-)
 
 diff --git a/services/core/Android.bp b/services/core/Android.bp
-index f2bd1a8a4..fa6e371b5 100644
+index f2bd1a8a433e..fa6e371b552e 100644
 --- a/services/core/Android.bp
 +++ b/services/core/Android.bp
 @@ -247,7 +247,9 @@ java_library_static {
@@ -42,7 +42,7 @@ index f2bd1a8a4..fa6e371b5 100644
      javac_shard_size: 50,
      javacflags: [
 diff --git a/services/core/java/com/android/server/wm/DisplayPolicy.java b/services/core/java/com/android/server/wm/DisplayPolicy.java
-index e1fa7c456..7621336a4 100644
+index e1fa7c4564c1..7621336a4097 100644
 --- a/services/core/java/com/android/server/wm/DisplayPolicy.java
 +++ b/services/core/java/com/android/server/wm/DisplayPolicy.java
 @@ -213,6 +213,9 @@ public class DisplayPolicy {

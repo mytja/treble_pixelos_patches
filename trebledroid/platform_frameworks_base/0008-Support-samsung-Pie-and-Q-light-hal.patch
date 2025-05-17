@@ -1,7 +1,7 @@
-From 0253b5371e4015599934d686db71b43f33e33e46 Mon Sep 17 00:00:00 2001
+From 97860cd125b4dd923d89693d2f85f739d3bd45be Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 24 Mar 2019 23:05:14 +0100
-Subject: [PATCH 08/48] Support samsung Pie and Q light hal
+Subject: [PATCH 08/51] Support samsung Pie and Q light hal
 
 Change-Id: I01f94acd7d0672733e48854d80368f9ac6f861c6
 ---
@@ -9,7 +9,7 @@ Change-Id: I01f94acd7d0672733e48854d80368f9ac6f861c6
  1 file changed, 2 insertions(+)
 
 diff --git a/services/core/jni/Android.bp b/services/core/jni/Android.bp
-index 4c0cee404..ee2dc4d69 100644
+index 4c0cee404b68..ee2dc4d69822 100644
 --- a/services/core/jni/Android.bp
 +++ b/services/core/jni/Android.bp
 @@ -208,6 +208,8 @@ cc_defaults {

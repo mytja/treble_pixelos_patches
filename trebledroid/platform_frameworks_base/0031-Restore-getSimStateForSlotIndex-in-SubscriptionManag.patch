@@ -1,7 +1,7 @@
-From 43bd9dae29b869b125b6ebc077804ff7105f8683 Mon Sep 17 00:00:00 2001
+From 62f644042bf7447490c79f67831069c234547f68 Mon Sep 17 00:00:00 2001
 From: Andy CrossGate Yan <GeForce8800Ultra@gmail.com>
 Date: Wed, 2 Aug 2023 20:59:53 +0800
-Subject: [PATCH 31/48] Restore getSimStateForSlotIndex in SubscriptionManager
+Subject: [PATCH 31/51] Restore getSimStateForSlotIndex in SubscriptionManager
 
 MTK IMS still needs it here
 
@@ -11,7 +11,7 @@ Change-Id: I41bac57c68055f369232359a464642daab94403b
  1 file changed, 14 insertions(+)
 
 diff --git a/telephony/java/android/telephony/SubscriptionManager.java b/telephony/java/android/telephony/SubscriptionManager.java
-index e0af22369..2175b3d96 100644
+index e0af22369182..2175b3d9667c 100644
 --- a/telephony/java/android/telephony/SubscriptionManager.java
 +++ b/telephony/java/android/telephony/SubscriptionManager.java
 @@ -2913,6 +2913,20 @@ public class SubscriptionManager {

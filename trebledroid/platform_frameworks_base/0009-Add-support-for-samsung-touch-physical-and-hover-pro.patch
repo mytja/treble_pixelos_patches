@@ -1,7 +1,7 @@
-From 76034cf21d7d284606cba51aff764f2b1f2ef5c5 Mon Sep 17 00:00:00 2001
+From ab9f375e82ecc69595c5f58ed98129a8cc993c0b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 12 Aug 2019 23:08:26 +0200
-Subject: [PATCH 09/48] Add support for samsung touch, physical and hover
+Subject: [PATCH 09/51] Add support for samsung touch, physical and hover
  proximity sensor as fallback to real proximity sensor
 
 Change-Id: I7a0f8b4665c802140d19197d850b77b2a7ac1865
@@ -10,7 +10,7 @@ Change-Id: I7a0f8b4665c802140d19197d850b77b2a7ac1865
  1 file changed, 35 insertions(+)
 
 diff --git a/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java b/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
-index 215932ca1..28c231217 100644
+index 215932ca19be..28c23121769e 100644
 --- a/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
 +++ b/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
 @@ -80,6 +80,20 @@ public final class DisplayPowerProximityStateController {

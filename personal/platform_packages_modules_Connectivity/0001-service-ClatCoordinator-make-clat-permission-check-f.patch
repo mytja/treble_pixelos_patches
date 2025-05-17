@@ -1,4 +1,4 @@
-From e637309a35e5757b71285157766f0127fcc6da88 Mon Sep 17 00:00:00 2001
+From d956946f78cb4b6750462e03a5c1030de2984b94 Mon Sep 17 00:00:00 2001
 From: J0SH1X <aljoshua.hell@gmail.com>
 Date: Thu, 20 Mar 2025 10:18:52 +0000
 Subject: [PATCH 1/2] service: ClatCoordinator: make clat permission check

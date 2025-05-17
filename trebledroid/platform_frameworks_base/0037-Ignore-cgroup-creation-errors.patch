@@ -1,7 +1,7 @@
-From 2e75a6242f2e44d3d5254f24d4e49bbbcce1b38f Mon Sep 17 00:00:00 2001
+From 001c34f541b4f0b075af801fc4e0961e8c4e4bc7 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 18 Oct 2023 16:53:40 -0400
-Subject: [PATCH 36/48] Ignore cgroup creation errors
+Subject: [PATCH 37/51] Ignore cgroup creation errors
 
 For old kernels who don't have those modern cgroups
 ---
@@ -10,7 +10,7 @@ For old kernels who don't have those modern cgroups
  2 files changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/core/jni/com_android_internal_os_Zygote.cpp b/core/jni/com_android_internal_os_Zygote.cpp
-index aeaeeca3e..ecc4fa719 100644
+index aeaeeca3e845..ecc4fa7197e4 100644
 --- a/core/jni/com_android_internal_os_Zygote.cpp
 +++ b/core/jni/com_android_internal_os_Zygote.cpp
 @@ -1961,10 +1961,12 @@ static void SpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArray gids,
@@ -27,7 +27,7 @@ index aeaeeca3e..ecc4fa719 100644
      }
  
 diff --git a/services/core/java/com/android/server/am/ProcessList.java b/services/core/java/com/android/server/am/ProcessList.java
-index 70febcd63..f04aee672 100644
+index 70febcd63455..f04aee67253a 100644
 --- a/services/core/java/com/android/server/am/ProcessList.java
 +++ b/services/core/java/com/android/server/am/ProcessList.java
 @@ -2593,14 +2593,9 @@ public final class ProcessList {

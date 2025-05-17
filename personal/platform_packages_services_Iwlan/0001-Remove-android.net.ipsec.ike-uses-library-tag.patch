@@ -1,0 +1,43 @@
+From 08323af297e4f4004dcb150331e2973384594058 Mon Sep 17 00:00:00 2001
+From: Jihoon Kang <jihoonkang@google.com>
+Date: Thu, 6 Mar 2025 19:52:00 +0000
+Subject: [PATCH] Remove android.net.ipsec.ike uses-library tag
+
+The module is now an bootclasspath library, thus does not need to be
+listed in the manifest with uses-library tag.
+
+Test: CI
+Bug: 401285904
+Merged-In: I9daa402e48eb5a7abb2960610cb1855c55240a2e
+Change-Id: I9daa402e48eb5a7abb2960610cb1855c55240a2e
+---
+ AndroidManifest.xml      | 1 -
+ test/AndroidManifest.xml | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 5f44f46..b06f4aa 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -35,6 +35,5 @@
+               <action android:name="android.telephony.NetworkService" />
+           </intent-filter>
+       </service>
+-      <uses-library android:name="android.net.ipsec.ike" />
+   </application>
+ </manifest>
+diff --git a/test/AndroidManifest.xml b/test/AndroidManifest.xml
+index 029abe3..f4c72d9 100644
+--- a/test/AndroidManifest.xml
++++ b/test/AndroidManifest.xml
+@@ -7,7 +7,6 @@
+ 
+     <application android:label="IwlanUnitTest" android:debuggable="true">
+         <uses-library android:name="android.test.runner" />
+-        <uses-library android:name="android.net.ipsec.ike" />
+     </application>
+ 
+     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
+-- 
+2.34.1
+

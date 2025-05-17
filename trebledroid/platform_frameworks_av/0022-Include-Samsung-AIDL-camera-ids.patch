@@ -1,4 +1,4 @@
-From d6309ab2e231a598db195c5e3a57731a2e7087d1 Mon Sep 17 00:00:00 2001
+From 11b3feb771b5ac315258b086e1ebdc8a6c662192 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 7 Feb 2024 05:06:32 -0500
 Subject: [PATCH 22/24] Include Samsung AIDL camera ids
@@ -9,7 +9,7 @@ Subject: [PATCH 22/24] Include Samsung AIDL camera ids
  2 files changed, 22 insertions(+)
 
 diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
-index b17ea73..4ba0552 100644
+index 9b12b42..943c71b 100644
 --- a/services/camera/libcameraservice/Android.bp
 +++ b/services/camera/libcameraservice/Android.bp
 @@ -117,6 +117,7 @@ cc_defaults {

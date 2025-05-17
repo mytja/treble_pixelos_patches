@@ -1,0 +1,50 @@
+From db200ece80ff1a2f9e314ef5a4ab1fd9e2af46ee Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Fri, 16 May 2025 20:01:51 +0200
+Subject: [PATCH 10/16] Revert "PiHooks: Update fingerprints"
+
+This reverts commit 855dbc051de92e8632959159d440504214ad7865.
+---
+ .../android/internal/util/PropImitationHooks.java    | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/core/java/com/android/internal/util/PropImitationHooks.java b/core/java/com/android/internal/util/PropImitationHooks.java
+index 5927b70a4f6d..b95ba943137f 100644
+--- a/core/java/com/android/internal/util/PropImitationHooks.java
++++ b/core/java/com/android/internal/util/PropImitationHooks.java
+@@ -93,8 +93,8 @@ public class PropImitationHooks {
+             "MANUFACTURER", "Google",
+             "BRAND", "google",
+             "MODEL", "Pixel 9 Pro",
+-            "ID", "BP1A.250305.020",
+-            "FINGERPRINT", "google/caiman/caiman:15/BP1A.250305.020/13009785:user/release-keys"
++            "ID", "AD1A.240905.004",
++            "FINGERPRINT", "google/caiman/caiman:14/AD1A.240905.004/12196292:user/release-keys"
+     );
+ 
+     private static final Map<String, String> sPixelFiveProps = Map.of(
+@@ -104,8 +104,8 @@ public class PropImitationHooks {
+             "MANUFACTURER", "Google",
+             "BRAND", "google",
+             "MODEL", "Pixel 5a",
+-            "ID", "AP2A.240805.005.S4",
+-            "FINGERPRINT", "google/barbet/barbet:14/AP2A.240805.005.S4/12281092:user/release-keys"
++            "ID", "AP2A.240805.004",
++            "FINGERPRINT", "google/barbet/barbet:14/AP2A.240805.005/12025142:user/release-keys"
+     );
+ 
+     private static final Map<String, String> sPixelTabletProps = Map.of(
+@@ -115,8 +115,8 @@ public class PropImitationHooks {
+             "MANUFACTURER", "Google",
+             "BRAND", "google",
+             "MODEL", "Pixel Tablet",
+-            "ID", "BP1A.250305.020.T2",
+-            "FINGERPRINT", "google/tangorpro/tangorpro:15/BP1A.250305.020.T2/13023825:user/release-keys"
++            "ID", "AP2A.240905.003",
++            "FINGERPRINT", "google/tangorpro/tangorpro:14/AP2A.240905.003/12231197:user/release-keys"
+     );
+ 
+     private static final Map<String, String> sPixelXLProps = Map.of(
+-- 
+2.34.1
+

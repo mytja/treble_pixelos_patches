@@ -1,4 +1,4 @@
-From b62bf77f67f27da36d5418a322401c4788e0c6b9 Mon Sep 17 00:00:00 2001
+From 44d2b31c6c953c94bd467a5b5b9bd09c7a6cb153 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Thu, 14 May 2020 19:54:55 +0200
 Subject: [PATCH 09/24] Add persist.sys.phh.samsung.camera_ids property to
@@ -11,7 +11,7 @@ Change-Id: I2c7bf535272acc28ed2277e96c78ddd28a0b4593
  2 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
-index 594cf7b..d90d565 100644
+index f917464..59f6bcb 100644
 --- a/services/camera/libcameraservice/Android.bp
 +++ b/services/camera/libcameraservice/Android.bp
 @@ -113,6 +113,7 @@ cc_defaults {

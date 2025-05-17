@@ -1,7 +1,7 @@
-From be2f7e2ffc9f4e7f269175ad7e65e4a6cf7bebd5 Mon Sep 17 00:00:00 2001
+From 783e2d08a1301192b9a737826a6269538b15621b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 14 Dec 2022 17:21:00 -0500
-Subject: [PATCH 27/48] Call Samsung's ISehSysInputDev to report screen state
+Subject: [PATCH 27/51] Call Samsung's ISehSysInputDev to report screen state
  to touchscreen driver
 
 This fixes touchscreen not waking up on Galaxy F23
@@ -13,7 +13,7 @@ Change-Id: If2d74b97a51b19c730a6f9a1b1f4293d1469a9f8
  2 files changed, 32 insertions(+)
 
 diff --git a/services/core/Android.bp b/services/core/Android.bp
-index 65af2d24e..f2bd1a8a4 100644
+index 65af2d24eb1a..f2bd1a8a433e 100644
 --- a/services/core/Android.bp
 +++ b/services/core/Android.bp
 @@ -247,6 +247,7 @@ java_library_static {
@@ -25,7 +25,7 @@ index 65af2d24e..f2bd1a8a4 100644
      javac_shard_size: 50,
      javacflags: [
 diff --git a/services/core/java/com/android/server/display/LocalDisplayAdapter.java b/services/core/java/com/android/server/display/LocalDisplayAdapter.java
-index d37dd3018..980a287dd 100644
+index d37dd3018fde..980a287dda27 100644
 --- a/services/core/java/com/android/server/display/LocalDisplayAdapter.java
 +++ b/services/core/java/com/android/server/display/LocalDisplayAdapter.java
 @@ -38,6 +38,7 @@ import android.os.Trace;

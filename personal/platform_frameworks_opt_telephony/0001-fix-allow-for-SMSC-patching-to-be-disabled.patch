@@ -1,7 +1,7 @@
-From aadc27c8f3b2d3cc0eb3d4f01da736ca46e6c803 Mon Sep 17 00:00:00 2001
+From 8d7d5670a376ad3f99851405258c839c08c6d79c Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 30 Mar 2025 17:38:53 +0200
-Subject: [PATCH] fix: allow for SMSC patching to be disabled
+Subject: [PATCH 1/2] fix: allow for SMSC patching to be disabled
 
 This is required on my Samsung Galaxy A53 to be able to send messages.
 ---

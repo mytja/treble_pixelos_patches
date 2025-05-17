@@ -1,7 +1,7 @@
-From b279706d44b741e57536c0674fca8642ce2a05f2 Mon Sep 17 00:00:00 2001
+From c3f22e00e1ab1e965a3444a8b6f3ee3aa9786bb0 Mon Sep 17 00:00:00 2001
 From: ChonDoit <thphantomblog@gmail.com>
 Date: Thu, 24 Aug 2023 15:58:15 -0300
-Subject: [PATCH 35/48] Fix brightness slider curve for some devices
+Subject: [PATCH 36/51] Fix brightness slider curve for some devices
 
 Some devices report max brightness as 2047 or 4095
 ---
@@ -10,7 +10,7 @@ Some devices report max brightness as 2047 or 4095
  2 files changed, 15 insertions(+), 12 deletions(-)
 
 diff --git a/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java b/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
-index 3c06f8ae9..afdb085dd 100644
+index 3c06f8ae9972..afdb085dde31 100644
 --- a/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
 +++ b/packages/SettingsLib/DisplayUtils/src/com/android/settingslib/display/BrightnessUtils.java
 @@ -19,14 +19,17 @@ package com.android.settingslib.display;
@@ -54,7 +54,7 @@ index 3c06f8ae9..afdb085dd 100644
      }
  }
 diff --git a/packages/SystemUI/src/com/android/systemui/brightness/shared/model/GammaBrightness.kt b/packages/SystemUI/src/com/android/systemui/brightness/shared/model/GammaBrightness.kt
-index 7eba62688..b7a9d5f53 100644
+index 7eba6268869c..b7a9d5f535b4 100644
 --- a/packages/SystemUI/src/com/android/systemui/brightness/shared/model/GammaBrightness.kt
 +++ b/packages/SystemUI/src/com/android/systemui/brightness/shared/model/GammaBrightness.kt
 @@ -23,13 +23,13 @@ import com.android.systemui.util.kotlin.pairwiseBy

@@ -1,7 +1,7 @@
-From 7d404a691265d9f7950badaa763a6d583a21a006 Mon Sep 17 00:00:00 2001
+From 651a1bf9e8f84f32a0b54ced7c4df6f4dbcdc30b Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 21 Feb 2024 12:41:46 -0500
-Subject: [PATCH 42/48] Include vendor.samsung.hardware.radio.network-V1-java
+Subject: [PATCH 44/51] Include vendor.samsung.hardware.radio.network-V1-java
  in base libs, will be used by f/o/telephony
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 42/48] Include vendor.samsung.hardware.radio.network-V1-java
  1 file changed, 1 insertion(+)
 
 diff --git a/Android.bp b/Android.bp
-index 1a608091f..525cc4728 100644
+index 1a608091ff3d..525cc4728971 100644
 --- a/Android.bp
 +++ b/Android.bp
 @@ -241,6 +241,7 @@ java_library {

@@ -1,33 +1,30 @@
-From b341192118035cb37743cd91a61292e40ac54b9c Mon Sep 17 00:00:00 2001
+From 23abfe8cad91c4c4713930cdbf2b141edee61cbd Mon Sep 17 00:00:00 2001
 From: SamarV-121 <samar@samarv121.dev>
 Date: Thu, 30 Nov 2023 15:41:12 +0530
-Subject: [PATCH 7/9] PixelPropsUtils: Dynamically spoof props for GMS
+Subject: [PATCH 14/16] PixelPropsUtils: Dynamically spoof props for GMS
 
 neobuddy89: Adapted for PixelPropsUtils. Use local props as fallback.
-mytja: Adapted for PixelOS' PropImitationHooks.
 
 Signed-off-by: Pranav Vashi <neobuddy89@gmail.com>
-Signed-off-by: mytja <mitja@severkar.eu>
 ---
- .../internal/util/PropImitationHooks.java     |  57 +++++-
- .../server/crdroid/AttestationService.java    | 170 ++++++++++++++++++
+ .../util/crdroid/PixelPropsUtils.java         |  60 +++++-
+ .../server/crdroid/AttestationService.java    | 173 ++++++++++++++++++
  .../java/com/android/server/SystemServer.java |   6 +
- 3 files changed, 230 insertions(+), 3 deletions(-)
+ 3 files changed, 235 insertions(+), 4 deletions(-)
  create mode 100644 services/core/java/com/android/server/crdroid/AttestationService.java
 
-diff --git a/core/java/com/android/internal/util/PropImitationHooks.java b/core/java/com/android/internal/util/PropImitationHooks.java
-index 5927b70a4..162c4767e 100644
---- a/core/java/com/android/internal/util/PropImitationHooks.java
-+++ b/core/java/com/android/internal/util/PropImitationHooks.java
-@@ -26,6 +26,7 @@ import android.content.Context;
- import android.content.res.Resources;
+diff --git a/core/java/com/android/internal/util/crdroid/PixelPropsUtils.java b/core/java/com/android/internal/util/crdroid/PixelPropsUtils.java
+index e49f8977cf9e..be15895799cc 100644
+--- a/core/java/com/android/internal/util/crdroid/PixelPropsUtils.java
++++ b/core/java/com/android/internal/util/crdroid/PixelPropsUtils.java
+@@ -21,16 +21,26 @@ import android.app.Application;
+ import android.content.Context;
+ import android.content.res.Configuration;
  import android.os.Build;
- import android.os.Binder;
 +import android.os.Environment;
- import android.os.Process;
  import android.os.SystemProperties;
- import android.text.TextUtils;
-@@ -33,8 +34,18 @@ import android.util.Log;
++import android.text.TextUtils;
+ import android.util.Log;
  
  import com.android.internal.R;
  
@@ -39,41 +36,45 @@ index 5927b70a4..162c4767e 100644
 +import java.io.FileReader;
 +import java.io.IOException;
  import java.lang.reflect.Field;
-+import java.util.ArrayList;
+ import java.util.ArrayList;
  import java.util.Arrays;
+-import java.util.Collections;
+ import java.util.HashMap;
 +import java.util.Iterator;
 +import java.util.List;
  import java.util.Map;
- import java.util.Set;
  
-@@ -42,6 +53,7 @@ import java.util.Set;
-  * @hide
-  */
- public class PropImitationHooks {
+ /**
+@@ -40,7 +50,8 @@ public final class PixelPropsUtils {
+ 
+     private static final String TAG = PixelPropsUtils.class.getSimpleName();
+     private static final String DEVICE = "ro.product.device";
+-    private static final boolean DEBUG = false;
++    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 +    private static final String DATA_FILE = "gms_certified_props.json";
  
-     private static final String TAG = "PropImitationHooks";
-     private static final boolean DEBUG = SystemProperties.getBoolean("debug.pihooks.log", false);
-@@ -162,7 +174,7 @@ public class PropImitationHooks {
-             "PIXEL_2024_MIDYEAR_EXPERIENCE"
-     );
+     private static final String SPOOF_PIXEL_PI = "persist.sys.pixelprops.pi";
+     private static final String SPOOF_PIXEL_GAMES = "persist.sys.pixelprops.games";
+@@ -159,7 +170,7 @@ public final class PixelPropsUtils {
+     };
  
+     private static volatile boolean sIsFinsky = false;
 -    private static volatile String[] sCertifiedProps;
 +    private static volatile List<String> sCertifiedProps = new ArrayList<>();
-     private static volatile String sStockFp, sNetflixModel;
  
-     private static volatile String sProcessName;
-@@ -183,7 +195,29 @@ public class PropImitationHooks {
+     static {
+         propsToChangeGeneric = new HashMap<>();
+@@ -387,8 +398,32 @@ public final class PixelPropsUtils {
+     private static void spoofBuildGms(Context context) {
+         if (!SystemProperties.getBoolean(SPOOF_PIXEL_PI, true))
              return;
-         }
- 
--        sCertifiedProps = res.getStringArray(R.array.config_certifiedBuildProperties);
++
 +        File dataFile = new File(Environment.getDataSystemDirectory(), DATA_FILE);
 +        String savedProps = readFromFile(dataFile);
 +
 +        if (TextUtils.isEmpty(savedProps)) {
 +            Log.d(TAG, "Parsing props locally - data file unavailable");
-+            sCertifiedProps = Arrays.asList(res.getStringArray(R.array.config_certifiedBuildProperties));
++            sCertifiedProps = Arrays.asList(context.getResources().getStringArray(R.array.config_certifiedBuildProperties));
 +        } else {
 +            Log.d(TAG, "Parsing props fetched by attestation service");
 +            try {
@@ -88,23 +89,17 @@ index 5927b70a4..162c4767e 100644
 +            } catch (JSONException e) {
 +                Log.e(TAG, "Error parsing JSON data", e);
 +                Log.d(TAG, "Parsing props locally as fallback");
-+                sCertifiedProps = Arrays.asList(res.getStringArray(R.array.config_certifiedBuildProperties));
++                sCertifiedProps = Arrays.asList(context.getResources().getStringArray(R.array.config_certifiedBuildProperties));
 +            }
 +        }
-         sStockFp = res.getString(R.string.config_stockFingerprint);
-         sNetflixModel = res.getString(R.string.config_netflixSpoofModel);
- 
-@@ -287,7 +321,7 @@ public class PropImitationHooks {
-             return;
++
+         // Alter build parameters to avoid hardware attestation enforcement
+-        sCertifiedProps = context.getResources().getStringArray(R.array.config_certifiedBuildProperties);
+         for (String entry : sCertifiedProps) {
+             // Each entry must be of the format FIELD:value
+             final String[] fieldAndProp = entry.split(":", 2);
+@@ -400,6 +435,23 @@ public final class PixelPropsUtils {
          }
- 
--        if (sCertifiedProps.length == 0) {
-+        if (sCertifiedProps.isEmpty()) {
-             dlog("Certified props are not set");
-             return;
-         }
-@@ -402,6 +436,23 @@ public class PropImitationHooks {
-         return has;
      }
  
 +    private static String readFromFile(File file) {
@@ -124,15 +119,15 @@ index 5927b70a4..162c4767e 100644
 +        return content.toString();
 +    }
 +
-     public static void dlog(String msg) {
-         if (DEBUG) Log.d(TAG, "[" + sProcessName + "] " + msg);
-     }
+     private static boolean isCallerSafetyNet() {
+         return Arrays.stream(Thread.currentThread().getStackTrace())
+                         .anyMatch(elem -> elem.getClassName().toLowerCase()
 diff --git a/services/core/java/com/android/server/crdroid/AttestationService.java b/services/core/java/com/android/server/crdroid/AttestationService.java
 new file mode 100644
-index 000000000..be8aa9248
+index 000000000000..f9b6c561d84c
 --- /dev/null
 +++ b/services/core/java/com/android/server/crdroid/AttestationService.java
-@@ -0,0 +1,170 @@
+@@ -0,0 +1,173 @@
 +/*
 + * Copyright (C) 2024 The LeafOS Project
 + *
@@ -152,6 +147,7 @@ index 000000000..be8aa9248
 +import android.util.Log;
 +
 +import com.android.server.SystemService;
++import com.android.internal.util.crdroid.Utils;
 +
 +import java.io.BufferedReader;
 +import java.io.File;
@@ -196,7 +192,9 @@ index 000000000..be8aa9248
 +
 +    @Override
 +    public void onBootPhase(int phase) {
-+        if (SPOOF_PIXEL_PI && phase == PHASE_BOOT_COMPLETED) {
++        if (SPOOF_PIXEL_PI
++                && Utils.isPackageInstalled(mContext, "com.google.android.gms")
++                && phase == PHASE_BOOT_COMPLETED) {
 +            Log.i(TAG, "Scheduling the service");
 +            mScheduler.scheduleAtFixedRate(
 +                    new FetchGmsCertifiedProps(), INITIAL_DELAY, INTERVAL, TimeUnit.MINUTES);
@@ -304,7 +302,7 @@ index 000000000..be8aa9248
 +    }
 +}
 diff --git a/services/java/com/android/server/SystemServer.java b/services/java/com/android/server/SystemServer.java
-index 8b497ad86..f4ae9ea55 100644
+index 8b497ad86954..f4ae9ea55c51 100644
 --- a/services/java/com/android/server/SystemServer.java
 +++ b/services/java/com/android/server/SystemServer.java
 @@ -163,6 +163,7 @@ import com.android.server.contextualsearch.ContextualSearchManagerService;

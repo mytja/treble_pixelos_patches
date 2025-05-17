@@ -1,4 +1,4 @@
-From b824000df8229513bb6576a2e504b6e6dd2faadf Mon Sep 17 00:00:00 2001
+From 7ee4a8b77fe2cc90517a44ea1a51b7278d0662df Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 13 Mar 2021 14:20:03 -0500
 Subject: [PATCH 14/24] Support Samsung R multi-cams
@@ -10,7 +10,7 @@ Change-Id: If46f385e8dd16185cbf37ab083e6a1242e1d1555
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
-index d90d565..5b7508b 100644
+index 59f6bcb..11c3dd6 100644
 --- a/services/camera/libcameraservice/Android.bp
 +++ b/services/camera/libcameraservice/Android.bp
 @@ -114,6 +114,7 @@ cc_defaults {

@@ -1,7 +1,7 @@
-From e7a8b4c8170552b2e74568927cc07a14caf44ab7 Mon Sep 17 00:00:00 2001
+From 3a1c7fbe3875620e465ef31d0cf406755583e158 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 4 Feb 2024 18:01:07 -0500
-Subject: [PATCH 41/48] Some Samsung devices use SW_FLIP 0x15 rather than
+Subject: [PATCH 43/51] Some Samsung devices use SW_FLIP 0x15 rather than
  SW_MACHINE_COVER 0x10, so use that
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 41/48] Some Samsung devices use SW_FLIP 0x15 rather than
  1 file changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/services/core/java/com/android/server/input/InputManagerService.java b/services/core/java/com/android/server/input/InputManagerService.java
-index f9894c21f..d62fa47b6 100644
+index f9894c21f8e4..d62fa47b6ef3 100644
 --- a/services/core/java/com/android/server/input/InputManagerService.java
 +++ b/services/core/java/com/android/server/input/InputManagerService.java
 @@ -409,6 +409,8 @@ public class InputManagerService extends IInputManager.Stub

@@ -1,7 +1,7 @@
-From d97cdbd9246f88cbcc6c63aee82b2ef7947c1a58 Mon Sep 17 00:00:00 2001
+From 77e11cba465d218c426106d3a4c829a72cc86427 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 18 Oct 2023 16:57:34 -0400
-Subject: [PATCH 37/48] Samsung tablets use SW_MACHINE_COVER rather than SW_LID
+Subject: [PATCH 38/51] Samsung tablets use SW_MACHINE_COVER rather than SW_LID
 
 So check whether SW_MACHINE_COVER is declared, then use it
 Otherwise stick to SW_LID
@@ -12,7 +12,7 @@ Should fix https://github.com/phhusson/treble_experimentations/issues/2572
  1 file changed, 21 insertions(+), 4 deletions(-)
 
 diff --git a/services/core/java/com/android/server/input/InputManagerService.java b/services/core/java/com/android/server/input/InputManagerService.java
-index aee5e7f52..f9894c21f 100644
+index aee5e7f52c5f..f9894c21f8e4 100644
 --- a/services/core/java/com/android/server/input/InputManagerService.java
 +++ b/services/core/java/com/android/server/input/InputManagerService.java
 @@ -407,6 +407,9 @@ public class InputManagerService extends IInputManager.Stub

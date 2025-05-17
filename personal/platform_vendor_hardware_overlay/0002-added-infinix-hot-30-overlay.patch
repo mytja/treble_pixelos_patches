@@ -1,4 +1,4 @@
-From 0515481da07c4dd2293f04f3a4a112e44494f347 Mon Sep 17 00:00:00 2001
+From 7b9a622d85f10c2aaeb582259f00161056716865 Mon Sep 17 00:00:00 2001
 From: Moheshwar Amarnath Biswas <fluentmoheshwar@outlook.com>
 Date: Tue, 4 Feb 2025 01:14:49 +0600
 Subject: [PATCH 2/2] added infinix hot 30 overlay
@@ -242,7 +242,7 @@ index 0000000..49467d6
 +    </array>
 +</device>
 diff --git a/overlay.mk b/overlay.mk
-index 1a8bb00..91f682c 100644
+index 60f66f4..297b8b1 100644
 --- a/overlay.mk
 +++ b/overlay.mk
 @@ -58,6 +58,7 @@ PRODUCT_PACKAGES += \

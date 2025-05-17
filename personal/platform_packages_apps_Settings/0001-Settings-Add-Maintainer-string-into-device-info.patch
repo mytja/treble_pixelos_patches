@@ -1,4 +1,4 @@
-From 1e4ad04bd13038802ffde43f105eee4dc7fc86a9 Mon Sep 17 00:00:00 2001
+From 94b7167d0f722a9c44173bbd04112a2076c34785 Mon Sep 17 00:00:00 2001
 From: LuK1337 <priv.luk@gmail.com>
 Date: Mon, 24 Feb 2025 20:49:13 +0100
 Subject: [PATCH] Settings: Add Maintainer string into device info

@@ -1,7 +1,7 @@
-From e42e5a825b94805eab0846653a9e980067060c0d Mon Sep 17 00:00:00 2001
+From 0ec9656880330fd0f14e1e79bd66b260af5c3652 Mon Sep 17 00:00:00 2001
 From: LuK1337 <priv.luk@gmail.com>
 Date: Mon, 19 Feb 2024 16:20:04 +0100
-Subject: [PATCH 44/48] Allow signature spoofing for microG Companion/Services
+Subject: [PATCH 46/51] Allow signature spoofing for microG Companion/Services
 
 This patch enables signature spoofing when the following conditions are
 met:
@@ -21,7 +21,7 @@ Change-Id: I8fc82ed266a2cc59636b662c7ea7e29c94f509b5
  2 files changed, 49 insertions(+)
 
 diff --git a/services/core/java/com/android/server/pm/AppsFilterImpl.java b/services/core/java/com/android/server/pm/AppsFilterImpl.java
-index cc4c2b5bf..57263da93 100644
+index cc4c2b5bf893..57263da936d6 100644
 --- a/services/core/java/com/android/server/pm/AppsFilterImpl.java
 +++ b/services/core/java/com/android/server/pm/AppsFilterImpl.java
 @@ -36,6 +36,7 @@ import static com.android.server.pm.AppsFilterUtils.canQueryAsUpdateOwner;
@@ -41,7 +41,7 @@ index cc4c2b5bf..57263da93 100644
                              || newPkg.isForceQueryable()
                              || ArrayUtils.contains(mForceQueryableByDevicePackageNames,
 diff --git a/services/core/java/com/android/server/pm/ComputerEngine.java b/services/core/java/com/android/server/pm/ComputerEngine.java
-index be2f58dc2..f9df4d3b1 100644
+index be2f58dc276c..f9df4d3b11e4 100644
 --- a/services/core/java/com/android/server/pm/ComputerEngine.java
 +++ b/services/core/java/com/android/server/pm/ComputerEngine.java
 @@ -103,6 +103,7 @@ import android.content.pm.UserPackage;

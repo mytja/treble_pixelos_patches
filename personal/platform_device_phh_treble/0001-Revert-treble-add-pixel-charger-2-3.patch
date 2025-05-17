@@ -1,7 +1,7 @@
-From b5cd544e9d3ec8aefb80d766d1d1ba537c2c03a3 Mon Sep 17 00:00:00 2001
+From bee04b9883bb7c9ea69c638f82bfbb852ea4e013 Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Wed, 21 Jun 2023 17:55:48 +0000
-Subject: [PATCH 1/7] Revert "treble : add pixel charger 2/3"
+Subject: [PATCH 1/8] Revert "treble : add pixel charger 2/3"
 
 This reverts commit c8e77687288263848d9a92936c0138fefe0fdb8d.
 ---

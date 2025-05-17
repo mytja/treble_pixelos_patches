@@ -1,7 +1,7 @@
-From 73bd3ffa093ce1d38153b696d62c11a455a1f21c Mon Sep 17 00:00:00 2001
+From 8a4f906593f7929a38eb421b2552a73b7d4ec9bf Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 29 Sep 2020 22:39:47 +0200
-Subject: [PATCH 12/48] Some devices have proximity sensor reporting NaN as max
+Subject: [PATCH 12/51] Some devices have proximity sensor reporting NaN as max
  range for some reason. Make them behave standard way by setting 5 cm
 
 Change-Id: I3c39e3e914a05903c140235702e0480d2d58a612
@@ -10,7 +10,7 @@ Change-Id: I3c39e3e914a05903c140235702e0480d2d58a612
  1 file changed, 3 insertions(+)
 
 diff --git a/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java b/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
-index 28c231217..ad366abd2 100644
+index 28c23121769e..ad366abd2c60 100644
 --- a/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
 +++ b/services/core/java/com/android/server/display/DisplayPowerProximityStateController.java
 @@ -399,6 +399,9 @@ public final class DisplayPowerProximityStateController {

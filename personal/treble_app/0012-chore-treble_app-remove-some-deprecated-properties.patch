@@ -1,0 +1,67 @@
+From e3c169e0d41df8c959ead97085533eb10403b5cf Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Sat, 17 May 2025 01:30:35 +0200
+Subject: [PATCH 12/13] chore(treble_app): remove some deprecated properties
+
+Primarily those that are in connection with rounded corners.
+It makes treble_app cleaner.
+---
+ app/src/main/java/me/phh/treble/app/Misc.kt         | 7 -------
+ app/src/main/java/me/phh/treble/app/MiscSettings.kt | 1 -
+ app/src/main/res/xml/pref_misc.xml                  | 5 -----
+ 3 files changed, 13 deletions(-)
+
+diff --git a/app/src/main/java/me/phh/treble/app/Misc.kt b/app/src/main/java/me/phh/treble/app/Misc.kt
+index 86bca29..eeef99c 100644
+--- a/app/src/main/java/me/phh/treble/app/Misc.kt
++++ b/app/src/main/java/me/phh/treble/app/Misc.kt
+@@ -141,18 +141,11 @@ object Misc: EntryStartup {
+             MiscSettings.roundedCorners -> {
+                 val value = sp.getString(key, "-1").toInt()
+                 if (value >= 0) {
+-                    Settings.Secure.putInt(c.contentResolver, "sysui_rounded_content_padding", value)
+                     SystemProperties.set("persist.sys.phh.rounded_corners_padding", value.toString())
+ 		} else {
+                     SystemProperties.set("persist.sys.phh.rounded_corners_padding", null)
+                 }
+             }
+-            MiscSettings.roundedCornersOverlay -> {
+-                val value = sp.getString(key, "-1").toFloat()
+-                if (value >= 0) {
+-                    Settings.Secure.putFloat(c.contentResolver, "sysui_rounded_size", value)
+-                }
+-            }
+             MiscSettings.disableButtonsBacklight -> {
+                 val value = sp.getBoolean(key, false)
+                 SystemProperties.set("persist.sys.phh.disable_buttons_light", if (value) "true" else "false")
+diff --git a/app/src/main/java/me/phh/treble/app/MiscSettings.kt b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
+index 4992abb..012284c 100644
+--- a/app/src/main/java/me/phh/treble/app/MiscSettings.kt
++++ b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
+@@ -17,7 +17,6 @@ object MiscSettings : Settings {
+     val forceCamera2APIHAL3 = "key_misc_force_camera2api_hal3"
+     val headsetFix = "key_huawei_headset_fix"
+     val roundedCorners = "key_misc_rounded_corners"
+-    val roundedCornersOverlay = "key_misc_rounded_corners_overlay"
+     val disableButtonsBacklight = "key_misc_disable_buttons_backlight"
+     val forceNavbarOff = "key_misc_force_navbar_off"
+     val bluetooth = "key_misc_bluetooth"
+diff --git a/app/src/main/res/xml/pref_misc.xml b/app/src/main/res/xml/pref_misc.xml
+index eaa7687..18dd94b 100644
+--- a/app/src/main/res/xml/pref_misc.xml
++++ b/app/src/main/res/xml/pref_misc.xml
+@@ -40,11 +40,6 @@
+             android:title="Set rounded corners diameter"
+             android:inputType="number"
+             android:summary="Requires a reboot" />
+-        <EditTextPreference
+-            android:defaultValue="-1"
+-            android:key="key_misc_rounded_corners_overlay"
+-            android:title="Set forced/faked rounded corners diameter"
+-            android:inputType="number" />
+ 		<EditTextPreference
+ 			android:defaultValue="-1"
+ 			android:key="key_misc_sb_padding_top"
+-- 
+2.34.1
+

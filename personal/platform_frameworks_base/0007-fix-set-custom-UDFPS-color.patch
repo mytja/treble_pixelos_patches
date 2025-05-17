@@ -1,7 +1,7 @@
-From c10bc0fd6a3480e4e5f2492e614a6bb20aa57200 Mon Sep 17 00:00:00 2001
+From f6ca5ea5faf61ab24219114914989cc3a16c5130 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 6 Apr 2025 16:02:58 +0200
-Subject: [PATCH 6/9] fix: set custom UDFPS color
+Subject: [PATCH 07/16] fix: set custom UDFPS color
 
 This should enable changing UDFPS color on LineageOS-based ROMs.
 It's intended mostly since on A15 QPR2, Google has removed UdfpsView.kt,
@@ -30,7 +30,7 @@ Co-authored-by: Pierre-Hugues Husson <phh@phh.me>
  1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsSurfaceView.java b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsSurfaceView.java
-index dae25f71a..1b28fbcfb 100644
+index dae25f71af0f..1b28fbcfb79f 100644
 --- a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsSurfaceView.java
 +++ b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsSurfaceView.java
 @@ -68,13 +68,22 @@ public class UdfpsSurfaceView extends SurfaceView implements SurfaceHolder.Callb

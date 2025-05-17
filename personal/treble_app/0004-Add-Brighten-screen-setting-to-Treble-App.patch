@@ -1,7 +1,7 @@
-From 0d247813f33d261ff0ef001d2d5db35774037c48 Mon Sep 17 00:00:00 2001
+From 4eb32efe46a68c9ca11f2b0930154bfd4b54b005 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 27 Oct 2024 18:52:24 +0100
-Subject: [PATCH 4/9] Add Brighten screen setting to Treble App
+Subject: [PATCH 04/13] Add Brighten screen setting to Treble App
 
 Related to a commit in packages/apps/FaceUnlock.
 

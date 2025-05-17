@@ -1,4 +1,4 @@
-From 246a941d1858f13e8c29a4f249a9206d2236f3df Mon Sep 17 00:00:00 2001
+From 7fdd64458cdb3a9b31b388882c02b862494f6fd0 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 30 May 2023 17:34:03 -0400
 Subject: [PATCH 7/8] Add a property to cap declared le vendor version. Found

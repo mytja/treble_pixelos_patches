@@ -1,7 +1,7 @@
-From 03179526aed859cf29dced8a46eed0a58ac5d8f0 Mon Sep 17 00:00:00 2001
+From c23a8e7089af26a5977dc951362773c5620cc11c Mon Sep 17 00:00:00 2001
 From: Victor Bo <bvoid@yandex.ru>
 Date: Tue, 15 Sep 2020 21:26:45 -0400
-Subject: [PATCH 3/7] treble: add offline charger sepolicy
+Subject: [PATCH 3/8] treble: add offline charger sepolicy
 
 ---
  sepolicy/gsicharger.te | 1 +

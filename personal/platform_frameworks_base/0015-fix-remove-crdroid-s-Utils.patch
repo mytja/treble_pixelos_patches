@@ -1,0 +1,33 @@
+From 0f1e93b9b967eff3d0c4009b03f8eaf2e5043b06 Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Fri, 16 May 2025 22:17:17 +0200
+Subject: [PATCH 15/16] fix: remove crdroid's Utils
+
+PixelOS has Google apps installed by default, so always spoof it.
+---
+ .../java/com/android/server/crdroid/AttestationService.java     | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/services/core/java/com/android/server/crdroid/AttestationService.java b/services/core/java/com/android/server/crdroid/AttestationService.java
+index f9b6c561d84c..7a11a8601a74 100644
+--- a/services/core/java/com/android/server/crdroid/AttestationService.java
++++ b/services/core/java/com/android/server/crdroid/AttestationService.java
+@@ -17,7 +17,6 @@ import android.os.SystemProperties;
+ import android.util.Log;
+ 
+ import com.android.server.SystemService;
+-import com.android.internal.util.crdroid.Utils;
+ 
+ import java.io.BufferedReader;
+ import java.io.File;
+@@ -63,7 +62,6 @@ public final class AttestationService extends SystemService {
+     @Override
+     public void onBootPhase(int phase) {
+         if (SPOOF_PIXEL_PI
+-                && Utils.isPackageInstalled(mContext, "com.google.android.gms")
+                 && phase == PHASE_BOOT_COMPLETED) {
+             Log.i(TAG, "Scheduling the service");
+             mScheduler.scheduleAtFixedRate(
+-- 
+2.34.1
+

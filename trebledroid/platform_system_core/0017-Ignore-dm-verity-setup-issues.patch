@@ -1,4 +1,4 @@
-From 3aef52cd3d3c049d93795c5286f004c79ded9e72 Mon Sep 17 00:00:00 2001
+From 6a98785510f0f0b27eb7a578ccd4024bdb0271e9 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Fri, 6 Oct 2023 08:20:48 -0400
 Subject: [PATCH 17/27] Ignore dm-verity setup issues
