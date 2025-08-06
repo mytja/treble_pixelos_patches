@@ -1,7 +1,7 @@
-From f2c463bcf723dcda87bd77105738c77bbf8af69f Mon Sep 17 00:00:00 2001
+From e9737997d1e8daaf6c94b4d99a362912a7b75853 Mon Sep 17 00:00:00 2001
 From: Andy CrossGate Yan <GeForce8800Ultra@gmail.com>
 Date: Sat, 12 Aug 2023 20:11:17 +0800
-Subject: [PATCH 32/51] Add runWithCleanCallingIdentity variant with both
+Subject: [PATCH 32/52] Add runWithCleanCallingIdentity variant with both
  executor and return value
 
 This complements the fixup to ImsPhoneCallTracker (in fw/o/t) for U
@@ -12,7 +12,7 @@ Change-Id: If444290787025e130dce4bdeaf92372ae32793fe
  1 file changed, 30 insertions(+)
 
 diff --git a/telephony/common/com/android/internal/telephony/util/TelephonyUtils.java b/telephony/common/com/android/internal/telephony/util/TelephonyUtils.java
-index 4224338918f4..3bbecf0f2065 100644
+index 422433891..3bbecf0f2 100644
 --- a/telephony/common/com/android/internal/telephony/util/TelephonyUtils.java
 +++ b/telephony/common/com/android/internal/telephony/util/TelephonyUtils.java
 @@ -47,7 +47,9 @@ import com.android.internal.telephony.ITelephony;

@@ -1,0 +1,30 @@
+From 9d1453faba68a9aa95f4c9aa2019bea8ec37a135 Mon Sep 17 00:00:00 2001
+From: "Christopher A. Williamson" <contact@chrisaw.io>
+Date: Sun, 1 Jun 2025 21:05:59 +0100
+Subject: [PATCH] Allow EXPENSIVE_RENDERING power mode to be disabled
+
+---
+ services/surfaceflinger/PowerAdvisor/PowerAdvisor.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/services/surfaceflinger/PowerAdvisor/PowerAdvisor.cpp b/services/surfaceflinger/PowerAdvisor/PowerAdvisor.cpp
+index 788448d..1159540 100644
+--- a/services/surfaceflinger/PowerAdvisor/PowerAdvisor.cpp
++++ b/services/surfaceflinger/PowerAdvisor/PowerAdvisor.cpp
+@@ -72,6 +72,13 @@ static constexpr ftl::Flags<Workload> TRIGGER_LOAD_CHANGE_HINTS = Workload::EFFE
+ PowerAdvisor::PowerAdvisor(std::function<void()>&& sfDisableExpensiveFn,
+                            std::chrono::milliseconds timeout)
+       : mPowerHal(std::make_unique<power::PowerHalController>()) {
++    // Force disable if property is set
++    constexpr const char* kDisableProp = "persist.sys.phh.disable_expensive_rendering_mode";
++    if (android::base::GetBoolProperty(kDisableProp, false)) {
++        mHasExpensiveRendering = false;
++        ALOGI("EXPENSIVE_RENDERING forcibly disabled (property %s=1)", kDisableProp);
++    }
++
+     if (timeout > 0ms) {
+         mScreenUpdateTimer.emplace("UpdateImminentTimer", timeout,
+                                    /* resetCallback */ nullptr,
+-- 
+2.34.1
+

@@ -1,0 +1,29 @@
+From 7474e5f7043351a8a7fd22e934093148a1ef202b Mon Sep 17 00:00:00 2001
+From: "Christopher A. Williamson" <contact@chrisaw.io>
+Date: Tue, 27 May 2025 09:21:08 +0100
+Subject: [PATCH 11/11] Allow a prop to override DOZE_SUSPEND to DOZE for AoD
+ if device doesnt support DOZE_SUSPEND
+
+---
+ .../com/android/server/display/DisplayPowerController.java   | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/services/core/java/com/android/server/display/DisplayPowerController.java b/services/core/java/com/android/server/display/DisplayPowerController.java
+index 1b17e7a55..7636bf417 100644
+--- a/services/core/java/com/android/server/display/DisplayPowerController.java
++++ b/services/core/java/com/android/server/display/DisplayPowerController.java
+@@ -1368,6 +1368,11 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
+                 mDisplayStateController
+                         .updateDisplayState(mPowerRequest, mIsEnabled, mIsInTransition);
+         int state = stateAndReason.first;
++        boolean disableDisplayDozeSuspend = SystemProperties.get("persist.sys.phh.disable_display_doze_suspend", "0").equals("1");
++
++        if (disableDisplayDozeSuspend && state == Display.STATE_DOZE_SUSPEND) {
++            state = Display.STATE_DOZE;
++        }
+ 
+         // Initialize things the first time the power state is changed.
+         if (mustInitialize) {
+-- 
+2.34.1
+

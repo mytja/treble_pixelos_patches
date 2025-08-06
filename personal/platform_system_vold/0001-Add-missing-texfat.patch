@@ -1,4 +1,4 @@
-From ff8336e069ed2a081ff11fe722c1d5bc109add10 Mon Sep 17 00:00:00 2001
+From 3ff33f08f9ce52b007cea2b0467285e835db2df4 Mon Sep 17 00:00:00 2001
 From: Huy Hoang <boydaihungst@gmail.com>
 Date: Tue, 24 Oct 2023 20:30:39 +0700
 Subject: [PATCH 1/2] Add-missing-texfat
@@ -8,10 +8,10 @@ Subject: [PATCH 1/2] Add-missing-texfat
  1 file changed, 1 insertion(+)
 
 diff --git a/main.cpp b/main.cpp
-index 4f02e83..960e101 100644
+index 5b75659..b4412a7 100644
 --- a/main.cpp
 +++ b/main.cpp
-@@ -72,6 +72,7 @@ int main(int argc, char** argv) {
+@@ -73,6 +73,7 @@ int main(int argc, char** argv) {
      ATRACE_BEGIN("main");
  
      LOG(DEBUG) << "Detected support for:"

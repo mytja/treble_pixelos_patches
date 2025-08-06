@@ -1,0 +1,53 @@
+From cc296bdb55ddc10b94f162cc165c30592fa5cb73 Mon Sep 17 00:00:00 2001
+From: MisterZtr <andey2004586@gmail.com>
+Date: Mon, 9 Dec 2024 06:24:06 +0300
+Subject: [PATCH 3/3] Settings: Make force LTE_CA toggle opt-in
+
+---
+ res/values/config.xml                                       | 3 +++
+ .../network/telephony/ForceLteCaPreferenceController.java   | 6 ++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/res/values/config.xml b/res/values/config.xml
+index 9138483..342926f 100644
+--- a/res/values/config.xml
++++ b/res/values/config.xml
+@@ -860,4 +860,7 @@
+     <!-- Force LTE_CA -->
+     <string name="force_lte_ca">Force LTE CA</string>
+     <string name="force_lte_ca_summary">Force LTE carrier aggregation to work</string>
++
++    <!-- Show Force LTE_CA toggle -->
++    <bool name="config_showForceLteCaToggle" translatable="false">false</bool>
+ </resources>
+diff --git a/src/com/android/settings/network/telephony/ForceLteCaPreferenceController.java b/src/com/android/settings/network/telephony/ForceLteCaPreferenceController.java
+index 4034f5e..5753558 100644
+--- a/src/com/android/settings/network/telephony/ForceLteCaPreferenceController.java
++++ b/src/com/android/settings/network/telephony/ForceLteCaPreferenceController.java
+@@ -16,6 +16,7 @@ import com.android.internal.telephony.util.ArrayUtils;
+ import com.android.settingslib.core.lifecycle.LifecycleObserver;
+ import com.android.settingslib.core.lifecycle.events.OnStart;
+ import com.android.settingslib.core.lifecycle.events.OnStop;
++import com.android.settings.R;
+ /**
+  * Preference controller for "Force LTE_CA" hack
+  */
+@@ -57,10 +58,15 @@ public class ForceLteCaPreferenceController extends TelephonyTogglePreferenceCon
+     }
+     @Override
+     public int getAvailabilityStatus(int subId) {
++
++        if (!mContext.getResources().getBoolean(R.bool.config_showForceLteCaToggle))
++            return UNSUPPORTED_ON_DEVICE;
++
+         init(subId);
+         if (SubscriptionManager.isValidSubscriptionId(mSubId)) {
+             return AVAILABLE;
+         }
++
+         return CONDITIONALLY_UNAVAILABLE;
+     }
+     @Override
+-- 
+2.34.1
+

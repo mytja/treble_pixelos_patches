@@ -1,7 +1,7 @@
-From 016507ee6aa7c018fd470df839575e44349f3b69 Mon Sep 17 00:00:00 2001
+From 1f80ba6586237425ce6020a686e3af8fc9fdb28d Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 27 Oct 2024 20:32:36 +0100
-Subject: [PATCH 05/16] feat: add a setting to force a specific number of SIM
+Subject: [PATCH 05/11] feat: add a setting to force a specific number of SIM
  slots
 
 Some device models seemingly report a wrong number of SIM slots.
@@ -11,7 +11,7 @@ This patch should in combination with another one inside frameworks/base be a te
  1 file changed, 20 insertions(+)
 
 diff --git a/telephony/java/android/telephony/TelephonyManager.java b/telephony/java/android/telephony/TelephonyManager.java
-index 729240ba4ddf..912d8b8ed17b 100644
+index 0edaaada1..65be86977 100644
 --- a/telephony/java/android/telephony/TelephonyManager.java
 +++ b/telephony/java/android/telephony/TelephonyManager.java
 @@ -468,6 +468,8 @@ public class TelephonyManager {
@@ -23,7 +23,7 @@ index 729240ba4ddf..912d8b8ed17b 100644
      /**
       * A {@link PropertyInvalidatedCache} which lives in an app's {@link TelephonyManager} instance.
       * Caches any queries for a mapping between {@link PhoneAccountHandle} and {@code subscription
-@@ -644,6 +646,15 @@ public class TelephonyManager {
+@@ -647,6 +649,15 @@ public class TelephonyManager {
      public MultiSimVariants getMultiSimConfiguration() {
          String mSimConfig =
                  TelephonyProperties.multi_sim_config().orElse("");
@@ -39,7 +39,7 @@ index 729240ba4ddf..912d8b8ed17b 100644
          if (mSimConfig.equals("dsds")) {
              return MultiSimVariants.DSDS;
          } else if (mSimConfig.equals("dsda")) {
-@@ -678,6 +689,11 @@ public class TelephonyManager {
+@@ -687,6 +698,11 @@ public class TelephonyManager {
       */
      public int getActiveModemCount() {
          int modemCount = 1;
@@ -51,7 +51,7 @@ index 729240ba4ddf..912d8b8ed17b 100644
          switch (getMultiSimConfiguration()) {
              case UNKNOWN:
                  modemCount = 1;
-@@ -705,6 +721,10 @@ public class TelephonyManager {
+@@ -714,6 +730,10 @@ public class TelephonyManager {
       * {@link #getActiveModemCount} returns 1 while this API returns 2.
       */
      public int getSupportedModemCount() {

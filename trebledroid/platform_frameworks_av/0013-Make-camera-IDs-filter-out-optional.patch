@@ -1,7 +1,7 @@
-From 6fa45379d78fde7b9e8e827b55ba5f43202143dd Mon Sep 17 00:00:00 2001
+From 8498ae71786feb949c2629122082a00361899667 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 21 Dec 2020 20:19:11 +0100
-Subject: [PATCH 13/24] Make camera IDs filter-out optional
+Subject: [PATCH 13/25] Make camera IDs filter-out optional
 
 Nowadays most people have Camera 2 apps, and would like to have all
 cameras, rather than limit which cameras are available.
@@ -11,10 +11,10 @@ Add a property for that.
  1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/services/camera/libcameraservice/common/CameraProviderManager.cpp b/services/camera/libcameraservice/common/CameraProviderManager.cpp
-index 6ba55f7..8b3b807 100644
+index 2cbed3a..9974d33 100644
 --- a/services/camera/libcameraservice/common/CameraProviderManager.cpp
 +++ b/services/camera/libcameraservice/common/CameraProviderManager.cpp
-@@ -336,7 +336,9 @@ std::vector<std::string> CameraProviderManager::getAPI1CompatibleCameraDeviceIds
+@@ -337,7 +337,9 @@ std::vector<std::string> CameraProviderManager::getAPI1CompatibleCameraDeviceIds
          // API1 app doesn't handle logical and physical camera devices well. So
          // for each camera facing, only take the first id advertised by HAL in
          // all [logical, physical1, physical2, ...] id combos, and filter out the rest.
@@ -25,7 +25,7 @@ index 6ba55f7..8b3b807 100644
          collectDeviceIdsLocked(providerDeviceIds, publicDeviceIds, systemDeviceIds);
      }
      auto sortFunc =
-@@ -1169,10 +1171,12 @@ SystemCameraKind CameraProviderManager::ProviderInfo::DeviceInfo3::getSystemCame
+@@ -1194,10 +1196,12 @@ SystemCameraKind CameraProviderManager::ProviderInfo::DeviceInfo3::getSystemCame
  
      // Go through the capabilities and check if it has
      // ANDROID_REQUEST_AVAILABLE_CAPABILITIES_SYSTEM_CAMERA

@@ -1,0 +1,36 @@
+From b4e73493bd9d41e9271c4d268f0a70129a8655ec Mon Sep 17 00:00:00 2001
+From: MisterZtr <andey2004586@gmail.com>
+Date: Mon, 9 Dec 2024 06:06:39 +0300
+Subject: [PATCH 10/11] HACK: telephony: Conditionally force enable LTE_CA
+
+---
+ .../java/android/telephony/NetworkRegistrationInfo.java     | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/telephony/java/android/telephony/NetworkRegistrationInfo.java b/telephony/java/android/telephony/NetworkRegistrationInfo.java
+index 7de0a2a8e..729325ca7 100644
+--- a/telephony/java/android/telephony/NetworkRegistrationInfo.java
++++ b/telephony/java/android/telephony/NetworkRegistrationInfo.java
+@@ -27,6 +27,7 @@ import android.compat.annotation.EnabledSince;
+ import android.os.Build;
+ import android.os.Parcel;
+ import android.os.Parcelable;
++import android.os.SystemProperties;
+ import android.telephony.AccessNetworkConstants.TransportType;
+ import android.telephony.Annotation.NetworkType;
+ import android.text.TextUtils;
+@@ -639,6 +640,11 @@ public final class NetworkRegistrationInfo implements Parcelable {
+      * @hide
+      */
+     public void setAccessNetworkTechnology(@NetworkType int tech) {
++        // HACK: Force LTE Carrier Aggregation
++        if (SystemProperties.getBoolean("persist.sys.radio.force_lte_ca", false)
++                && tech == TelephonyManager.NETWORK_TYPE_LTE) {
++            mIsUsingCarrierAggregation = true;
++        }
+         if (tech == TelephonyManager.NETWORK_TYPE_LTE_CA) {
+             // For old device backward compatibility support
+             tech = TelephonyManager.NETWORK_TYPE_LTE;
+-- 
+2.34.1
+

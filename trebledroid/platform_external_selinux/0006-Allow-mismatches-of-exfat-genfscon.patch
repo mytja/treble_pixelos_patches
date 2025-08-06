@@ -1,4 +1,4 @@
-From 7b83da0f33273c80fc40369cee0a37176efdea7b Mon Sep 17 00:00:00 2001
+From b5f3f49a4cf84e4e727b1bf2e24086cc896ff771 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 24 May 2020 17:22:22 +0200
 Subject: [PATCH 06/12] Allow mismatches of exfat genfscon

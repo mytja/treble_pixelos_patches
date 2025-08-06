@@ -1,7 +1,7 @@
-From 4ef63490b6bc63c22186fbfaad3e909f23c6c0a4 Mon Sep 17 00:00:00 2001
+From a2c3e628ca8f323d5bec10c7f10d696bc3538128 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Mon, 21 Apr 2025 23:27:22 +0200
-Subject: [PATCH 09/13] allow for setting bottom status bar padding
+Subject: [PATCH 08/13] allow for setting bottom status bar padding
 
 Change-Id: Ice6e857042baf1ef4f00a132e66e23f732559403
 ---
@@ -11,7 +11,7 @@ Change-Id: Ice6e857042baf1ef4f00a132e66e23f732559403
  3 files changed, 15 insertions(+)
 
 diff --git a/app/src/main/java/me/phh/treble/app/Misc.kt b/app/src/main/java/me/phh/treble/app/Misc.kt
-index f2514d4..f32d821 100644
+index b25bc6d..2f0bf14 100644
 --- a/app/src/main/java/me/phh/treble/app/Misc.kt
 +++ b/app/src/main/java/me/phh/treble/app/Misc.kt
 @@ -332,6 +332,14 @@ object Misc: EntryStartup {
@@ -30,7 +30,7 @@ index f2514d4..f32d821 100644
                  val value = sp.getString(key, "-1").toInt()
                  if(value != -1) {
 diff --git a/app/src/main/java/me/phh/treble/app/MiscSettings.kt b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
-index d793e9a..d19551a 100644
+index 89040c3..863cdb6 100644
 --- a/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 +++ b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 @@ -47,6 +47,7 @@ object MiscSettings : Settings {
@@ -42,7 +42,7 @@ index d793e9a..d19551a 100644
      val qsclockrightpadding = "key_misc_qs_clock_right_padding"
      val brightenScreenFaceUnlock = "key_misc_brighten_screen_face_unlock"
 diff --git a/app/src/main/res/xml/pref_misc.xml b/app/src/main/res/xml/pref_misc.xml
-index 9430e85..1637d8c 100644
+index b79a29d..a5fe4bd 100644
 --- a/app/src/main/res/xml/pref_misc.xml
 +++ b/app/src/main/res/xml/pref_misc.xml
 @@ -63,6 +63,12 @@

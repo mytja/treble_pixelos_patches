@@ -1,7 +1,7 @@
-From d756aab318da68eb54feaf882ed3a0514df421c2 Mon Sep 17 00:00:00 2001
+From a51a19898bb364c86ff445e152e798273f2d0ccd Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Fri, 20 Dec 2024 22:14:35 +0100
-Subject: [PATCH 06/16] Attempt at fixing Samsung HIDL UDFPS
+Subject: [PATCH 06/11] Attempt at fixing Samsung HIDL UDFPS
 
 Now it's at least getting detected & getting placed in the right position.
 ---
@@ -10,10 +10,10 @@ Now it's at least getting detected & getting placed in the right position.
  2 files changed, 81 insertions(+), 2 deletions(-)
 
 diff --git a/services/core/java/com/android/server/biometrics/AuthService.java b/services/core/java/com/android/server/biometrics/AuthService.java
-index 9f01f1f40e24..6befb324fe07 100644
+index 37d3dcc13..dd6436e0d 100644
 --- a/services/core/java/com/android/server/biometrics/AuthService.java
 +++ b/services/core/java/com/android/server/biometrics/AuthService.java
-@@ -990,8 +990,24 @@ public class AuthService extends SystemService {
+@@ -983,8 +983,24 @@ public class AuthService extends SystemService {
      private void registerAuthenticators() {
          BiometricHandlerProvider handlerProvider = mInjector.getBiometricHandlerProvider();
  
@@ -40,7 +40,7 @@ index 9f01f1f40e24..6befb324fe07 100644
          registerFaceSensors(mInjector.getFaceAidlInstances(),
                  mInjector.getFaceConfiguration(getContext()), getContext(),
 diff --git a/services/core/java/com/android/server/biometrics/sensors/fingerprint/aidl/FingerprintProvider.java b/services/core/java/com/android/server/biometrics/sensors/fingerprint/aidl/FingerprintProvider.java
-index c31c43d20eb4..b3898abf4ffc 100644
+index c31c43d20..b3898abf4 100644
 --- a/services/core/java/com/android/server/biometrics/sensors/fingerprint/aidl/FingerprintProvider.java
 +++ b/services/core/java/com/android/server/biometrics/sensors/fingerprint/aidl/FingerprintProvider.java
 @@ -58,6 +58,7 @@ import android.os.UserManager;

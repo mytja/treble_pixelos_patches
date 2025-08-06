@@ -1,4 +1,4 @@
-From 57a6625ecae85293576ad4c0e6e2fafac102b08c Mon Sep 17 00:00:00 2001
+From aeff9ca0963486783f1547bae5c8d4e941f4dfee Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 7 May 2024 22:44:25 +0000
 Subject: [PATCH] Dont abort if the DnsHelper failed to init on BPF-less kernel
@@ -8,18 +8,18 @@ Subject: [PATCH] Dont abort if the DnsHelper failed to init on BPF-less kernel
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/DnsProxyListener.cpp b/DnsProxyListener.cpp
-index 04c5921..b881a68 100644
+index 302cfd9..515d3b5 100644
 --- a/DnsProxyListener.cpp
 +++ b/DnsProxyListener.cpp
-@@ -691,7 +691,7 @@ IsUidBlockedFn resolveIsUidNetworkingBlockedFn() {
-     const int ret = (*ADnsHelper_init)();
-     if (ret) {
+@@ -693,7 +693,7 @@ IsUidBlockedFn resolveIsUidNetworkingBlockedFn() {
+         // On S/Sv2 this can fail if tethering apex is too old, ignore it.
+         if (ret == -EOPNOTSUPP && !isAtLeastT()) return nullptr;
          LOG(ERROR) << __func__ << ": ADnsHelper_init failed " << strerror(-ret);
 -        abort();
 +        return nullptr;
      }
  
-     IsUidBlockedFn f =
+     // Related BPF maps were only mainlined from T.
 -- 
 2.34.1
 

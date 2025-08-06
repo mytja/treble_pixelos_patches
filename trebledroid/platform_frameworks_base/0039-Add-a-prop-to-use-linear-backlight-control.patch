@@ -1,17 +1,17 @@
-From e5f0dff348981f49efb532f43e36d37ffb65c06f Mon Sep 17 00:00:00 2001
+From 06ced9d174640f36526fad9355a2a63e272dafc7 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Mon, 30 Oct 2023 19:25:27 -0400
-Subject: [PATCH 39/51] Add a prop to use linear backlight control
+Subject: [PATCH 39/52] Add a prop to use linear backlight control
 
 ---
  .../settings/brightness/BrightnessController.java    | 12 +++++++++---
  1 file changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/settings/brightness/BrightnessController.java b/packages/SystemUI/src/com/android/systemui/settings/brightness/BrightnessController.java
-index 90d27f4b33e9..ce5b5e105e52 100644
+index c65c3b854..8856a9c9e 100644
 --- a/packages/SystemUI/src/com/android/systemui/settings/brightness/BrightnessController.java
 +++ b/packages/SystemUI/src/com/android/systemui/settings/brightness/BrightnessController.java
-@@ -386,9 +386,15 @@ public class BrightnessController implements ToggleSlider.Listener, MirroredBrig
+@@ -390,9 +390,15 @@ public class BrightnessController implements ToggleSlider.Listener, MirroredBrig
                  : MetricsEvent.ACTION_BRIGHTNESS;
          minBacklight = mBrightnessMin;
          maxBacklight = mBrightnessMax;
@@ -28,7 +28,7 @@ index 90d27f4b33e9..ce5b5e105e52 100644
          if (stopTracking) {
              // TODO(brightnessfloat): change to use float value instead.
              MetricsLogger.action(mContext, metric,
-@@ -402,8 +408,8 @@ public class BrightnessController implements ToggleSlider.Listener, MirroredBrig
+@@ -406,8 +412,8 @@ public class BrightnessController implements ToggleSlider.Listener, MirroredBrig
          if (!tracking) {
              AsyncTask.execute(new Runnable() {
                      public void run() {

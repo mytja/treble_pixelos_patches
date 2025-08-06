@@ -1,0 +1,27 @@
+From da043b1c9abb08dfed71d0b662f2780deccc0f75 Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Wed, 6 Aug 2025 20:45:01 +0200
+Subject: [PATCH 6/6] fix: Nuke some Android GSI overlay references
+
+they do not exist????
+Build errors, build errors, build errors!!!
+---
+ target/product/gsi/Android.bp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/target/product/gsi/Android.bp b/target/product/gsi/Android.bp
+index 5d6fb66..52f7277 100644
+--- a/target/product/gsi/Android.bp
++++ b/target/product/gsi/Android.bp
+@@ -104,8 +104,6 @@ android_filesystem_defaults {
+         "gsi_skip_mount.cfg",
+         "init.gsi.rc",
+         // Overlay the GSI specific setting for framework and SystemUI
+-        "gsi_overlay_framework",
+-        "gsi_overlay_systemui",
+ 
+         ///////////////////////////////////////////
+         // VNDK
+-- 
+2.34.1
+

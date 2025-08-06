@@ -1,7 +1,7 @@
-From e30d67d466d8a6b5d401d778661688ac2d381901 Mon Sep 17 00:00:00 2001
+From b12d68bb40047f34cdf058cb394714312a57a3ed Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 12 Sep 2020 12:32:50 +0200
-Subject: [PATCH 12/24] No longer make re-assigning legacy audio groups fatal.
+Subject: [PATCH 12/25] No longer make re-assigning legacy audio groups fatal.
  Mi9 declares AUDIO_STREAM_PATCH and AUDIO_STREAM_REROUTING which is defined
  by framework too
 
@@ -11,10 +11,10 @@ Change-Id: I794fe22d63a8af705be4f5f09b9879ecaab3eae5
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/services/audiopolicy/engine/common/src/EngineBase.cpp b/services/audiopolicy/engine/common/src/EngineBase.cpp
-index 0799399..3f2765c 100644
+index b0279b9..99be476 100644
 --- a/services/audiopolicy/engine/common/src/EngineBase.cpp
 +++ b/services/audiopolicy/engine/common/src/EngineBase.cpp
-@@ -274,9 +274,9 @@ engineConfig::ParsingResult EngineBase::processParsingResult(
+@@ -283,9 +283,9 @@ engineConfig::ParsingResult EngineBase::processParsingResult(
              }
              if (group.stream != AUDIO_STREAM_DEFAULT) {
                  // A legacy stream can be assigned once to a volume group

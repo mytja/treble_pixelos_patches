@@ -1,7 +1,7 @@
-From a9b928150edd875993c2ef6a42266a0507f220c3 Mon Sep 17 00:00:00 2001
+From b23deb734caf8f51e7a49b11e6e476583c762681 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sat, 18 Jan 2025 14:33:35 +0100
-Subject: [PATCH 5/5] Nuke QuickSearchBox and messaging
+Subject: [PATCH 5/6] Nuke QuickSearchBox and messaging
 
 ---
  target/product/aosp_base_telephony.mk | 3 ---

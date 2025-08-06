@@ -1,4 +1,4 @@
-From d732b017c63dfbf8ac89357c660d74ed4f338297 Mon Sep 17 00:00:00 2001
+From 4105f32e9c14c0b6030886e232e439eb077c393a Mon Sep 17 00:00:00 2001
 From: DerTeufel <dominik-kassel@gmx.de>
 Date: Wed, 4 Jan 2023 21:39:37 +0100
 Subject: [PATCH 2/8] Don't crash on status:UNSUPPORTED_REMOTE_OR_LMP_FEATURE
@@ -11,10 +11,10 @@ Change-Id: Ic57d6631185370cbfdeafdac00801c6ca27fb755
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/system/gd/hci/hci_layer.cc b/system/gd/hci/hci_layer.cc
-index 1311815..7b91388 100644
+index da370a7..06677cb 100644
 --- a/system/gd/hci/hci_layer.cc
 +++ b/system/gd/hci/hci_layer.cc
-@@ -238,8 +238,10 @@ struct HciLayer::impl {
+@@ -244,8 +244,10 @@ struct HciLayer::impl {
      using WaitingFor = CommandQueueEntry::WaitingFor;
      WaitingFor waiting_for = command_queue_.front().waiting_for_;
      CommandStatusView status_view = CommandStatusView::Create(event);

@@ -1,7 +1,7 @@
-From a2ee204fc2b77c1edff47f9bce5c2d9baa8f46b1 Mon Sep 17 00:00:00 2001
+From 8946ecaa4159d1fbfa080829c9da817c5356f98e Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sat, 17 May 2025 15:48:46 +0200
-Subject: [PATCH 16/16] feat(fw/b): set rounded corners
+Subject: [PATCH 09/11] feat(fw/b): set rounded corners
 
 I honestly have no idea why people want to set rounded corners, but
 here you go, I guess.
@@ -10,7 +10,7 @@ here you go, I guess.
  1 file changed, 13 insertions(+)
 
 diff --git a/core/java/android/view/RoundedCorners.java b/core/java/android/view/RoundedCorners.java
-index 1f841bf53364..c5a5fe1849a4 100644
+index 1f841bf53..c5a5fe184 100644
 --- a/core/java/android/view/RoundedCorners.java
 +++ b/core/java/android/view/RoundedCorners.java
 @@ -31,6 +31,7 @@ import android.content.res.TypedArray;

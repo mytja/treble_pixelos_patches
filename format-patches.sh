@@ -4,7 +4,7 @@ set -e
 
 patches="$(readlink -f -- $1)"
 tree="$2"
-patch_start="m/fifteen...trebledroid"
+patch_start="m/sixteen...trebledroid"
 
 for project in $(cd $patches/patches/$tree; echo *); do
     p="$(tr _ / <<<$project |sed -e 's;platform/;;g')"
@@ -15,10 +15,10 @@ for project in $(cd $patches/patches/$tree; echo *); do
     if [[ "$tree" == "personal" ]]; then
         patch_start="trebledroid"
         if [[ ! $(git tag -l "$patch_start") ]]; then
-            patch_start="m/15.0"
+            patch_start="m/16.0"
         fi
         if [[ ! $(git tag -l "$patch_start") ]]; then
-            patch_start="m/fifteen"
+            patch_start="m/sixteen"
         fi
     fi
     git format-patch "$patch_start"

@@ -1,4 +1,4 @@
-From 60080034c9ca4fc6bcb76c5875a2da27795134f9 Mon Sep 17 00:00:00 2001
+From ae69c0a4fd3fe87a3ebb556ac058749db9fd37f8 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 27 May 2023 06:41:32 -0400
 Subject: [PATCH 6/8] Add properties to disable some features/commands/states
@@ -9,7 +9,7 @@ Subject: [PATCH 6/8] Add properties to disable some features/commands/states
  1 file changed, 68 insertions(+), 12 deletions(-)
 
 diff --git a/system/gd/hci/controller.cc b/system/gd/hci/controller.cc
-index d93e991..b98952e 100644
+index 1408eba..3b11187 100644
 --- a/system/gd/hci/controller.cc
 +++ b/system/gd/hci/controller.cc
 @@ -21,6 +21,7 @@
@@ -29,7 +29,7 @@ index d93e991..b98952e 100644
  namespace bluetooth {
  namespace hci {
  
-@@ -362,16 +365,23 @@ struct Controller::impl {
+@@ -360,16 +363,23 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      log::assert_that(status == ErrorCode::SUCCESS, "Status {}", ErrorCodeText(status));
@@ -62,7 +62,7 @@ index d93e991..b98952e 100644
    }
  
    void read_local_extended_features_complete_handler(std::promise<void> promise,
-@@ -381,7 +391,25 @@ struct Controller::impl {
+@@ -379,7 +389,25 @@ struct Controller::impl {
      ErrorCode status = complete_view.GetStatus();
      log::assert_that(status == ErrorCode::SUCCESS, "Status {}", ErrorCodeText(status));
      uint8_t page_number = complete_view.GetPageNumber();
@@ -89,7 +89,7 @@ index d93e991..b98952e 100644
      if (page_number == 0 && local_version_information_.manufacturer_name_ == LMP_COMPID_INTEL &&
          local_version_information_.lmp_version_ == LmpVersion::V_4_2 &&
          local_version_information_.lmp_subversion_ == LMP_SUBVERSION_INTEL_AC7265) {
-@@ -544,7 +572,21 @@ struct Controller::impl {
+@@ -542,7 +570,21 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      log::assert_that(status == ErrorCode::SUCCESS, "Status {}", status, ErrorCodeText(status));
@@ -112,7 +112,7 @@ index d93e991..b98952e 100644
    }
  
    void le_read_supported_states_handler(CommandCompleteView view) {
-@@ -552,7 +594,21 @@ struct Controller::impl {
+@@ -550,7 +592,21 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      log::assert_that(status == ErrorCode::SUCCESS, "Status {}", ErrorCodeText(status));

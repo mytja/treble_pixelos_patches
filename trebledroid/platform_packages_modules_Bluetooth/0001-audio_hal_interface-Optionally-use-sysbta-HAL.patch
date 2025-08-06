@@ -1,4 +1,4 @@
-From 0a7d4fc6e288f67abcabaa07a165baad4d68fd28 Mon Sep 17 00:00:00 2001
+From 19220b5090ce8d4b4d9d99fd3cf65a132b247281 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Wed, 24 Aug 2022 15:45:18 -0400
 Subject: [PATCH 1/8] audio_hal_interface: Optionally use sysbta HAL
@@ -55,7 +55,7 @@ index f022ec3..283beb2 100644
      if (provider_factory == nullptr) {
        log::error("can't get capability from unknown factory");
 diff --git a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
-index a45ff94..4c99832 100644
+index bf687e7..c461c1a 100644
 --- a/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
 +++ b/system/audio_hal_interface/aidl/a2dp/client_interface_aidl.h
 @@ -28,6 +28,7 @@
@@ -66,7 +66,7 @@ index a45ff94..4c99832 100644
  
  // Keep after audio_aidl_interfaces.h because of <base/logging.h>
  // conflicting definitions.
-@@ -156,6 +157,12 @@ protected:
+@@ -158,6 +159,12 @@ protected:
    //     "android.hardware.bluetooth.audio.IBluetoothAudioProviderFactory/default";
    static inline const std::string kDefaultAudioProviderFactoryInterface =
            std::string() + IBluetoothAudioProviderFactory::descriptor + "/default";

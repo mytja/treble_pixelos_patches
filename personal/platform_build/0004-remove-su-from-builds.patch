@@ -1,17 +1,17 @@
-From 18e8c76f3760a2a35039ddb62039c0d767ce2c49 Mon Sep 17 00:00:00 2001
+From 31d41c6e5cd3eb20c1c39ec4a4d03f1f64b9ecf9 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Fri, 20 Sep 2024 17:24:51 +0200
-Subject: [PATCH 4/5] remove su from builds
+Subject: [PATCH 4/6] remove su from builds
 
 ---
  target/product/base_system.mk | 5 -----
  1 file changed, 5 deletions(-)
 
 diff --git a/target/product/base_system.mk b/target/product/base_system.mk
-index 1b24714..35379f9 100644
+index 07a7a8f..65ac52c 100644
 --- a/target/product/base_system.mk
 +++ b/target/product/base_system.mk
-@@ -535,11 +535,6 @@ PRODUCT_PACKAGES_DEBUG := \
+@@ -537,11 +537,6 @@ PRODUCT_PACKAGES_DEBUG := \
      unwind_reg_info \
      unwind_symbols \
  

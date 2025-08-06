@@ -1,7 +1,7 @@
-From e3c169e0d41df8c959ead97085533eb10403b5cf Mon Sep 17 00:00:00 2001
+From 917328e56bc32b9567104b4a716dc2c7a6276d2b Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sat, 17 May 2025 01:30:35 +0200
-Subject: [PATCH 12/13] chore(treble_app): remove some deprecated properties
+Subject: [PATCH 10/13] chore(treble_app): remove some deprecated properties
 
 Primarily those that are in connection with rounded corners.
 It makes treble_app cleaner.
@@ -12,7 +12,7 @@ It makes treble_app cleaner.
  3 files changed, 13 deletions(-)
 
 diff --git a/app/src/main/java/me/phh/treble/app/Misc.kt b/app/src/main/java/me/phh/treble/app/Misc.kt
-index 86bca29..eeef99c 100644
+index 2f0bf14..1f6928a 100644
 --- a/app/src/main/java/me/phh/treble/app/Misc.kt
 +++ b/app/src/main/java/me/phh/treble/app/Misc.kt
 @@ -141,18 +141,11 @@ object Misc: EntryStartup {
@@ -35,7 +35,7 @@ index 86bca29..eeef99c 100644
                  val value = sp.getBoolean(key, false)
                  SystemProperties.set("persist.sys.phh.disable_buttons_light", if (value) "true" else "false")
 diff --git a/app/src/main/java/me/phh/treble/app/MiscSettings.kt b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
-index 4992abb..012284c 100644
+index 863cdb6..0a604b0 100644
 --- a/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 +++ b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 @@ -17,7 +17,6 @@ object MiscSettings : Settings {
@@ -47,7 +47,7 @@ index 4992abb..012284c 100644
      val forceNavbarOff = "key_misc_force_navbar_off"
      val bluetooth = "key_misc_bluetooth"
 diff --git a/app/src/main/res/xml/pref_misc.xml b/app/src/main/res/xml/pref_misc.xml
-index eaa7687..18dd94b 100644
+index a5fe4bd..3d382b7 100644
 --- a/app/src/main/res/xml/pref_misc.xml
 +++ b/app/src/main/res/xml/pref_misc.xml
 @@ -40,11 +40,6 @@

@@ -1,4 +1,4 @@
-From 1006d5237bb4c26679a7c70a0bc9ce530e99d4ae Mon Sep 17 00:00:00 2001
+From 180bd3e2fd849dbd363dcf96a4df6669ea89a021 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Mitja=20=C5=A0everkar?= <mytja@protonmail.com>
 Date: Mon, 23 Sep 2024 18:09:42 +0000
 Subject: [PATCH 2/2] fix: announce exfat support with alternative drivers
@@ -11,7 +11,7 @@ LineageOS seems to include additional checks which I do not want to properly imp
  1 file changed, 6 insertions(+)
 
 diff --git a/Utils.cpp b/Utils.cpp
-index 7b2a9ce..b63d43c 100644
+index c2b2ad3..4edc3f0 100644
 --- a/Utils.cpp
 +++ b/Utils.cpp
 @@ -1107,6 +1107,12 @@ bool IsFilesystemSupported(const std::string& fsType) {

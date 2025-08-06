@@ -1,7 +1,7 @@
-From 6fa9a79d6bed0b20f5adbfba9df7cc90eb0355ff Mon Sep 17 00:00:00 2001
+From a69ebf0d64e7d7cb33d59d047d7217a3cc9abf84 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 3 Feb 2024 07:38:33 -0500
-Subject: [PATCH 11/19] Increase SW_MAX *= 4
+Subject: [PATCH 11/16] Increase SW_MAX *= 4
 
 We increase the size of SW_MAX for two reasons:
 1. SW_MACHINE_COVER which is SW_MAX is ignored, guessing an off by one
@@ -14,10 +14,10 @@ We increase the size of SW_MAX for two reasons:
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/services/inputflinger/reader/EventHub.cpp b/services/inputflinger/reader/EventHub.cpp
-index 552b512..13a8ad2 100644
+index c454972..cc7c776 100644
 --- a/services/inputflinger/reader/EventHub.cpp
 +++ b/services/inputflinger/reader/EventHub.cpp
-@@ -1136,7 +1136,7 @@ int32_t EventHub::getKeyCodeForKeyLocation(int32_t deviceId, int32_t locationKey
+@@ -1142,7 +1142,7 @@ int32_t EventHub::getKeyCodeForKeyLocation(int32_t deviceId, int32_t locationKey
  }
  
  int32_t EventHub::getSwitchState(int32_t deviceId, int32_t sw) const {
@@ -26,7 +26,7 @@ index 552b512..13a8ad2 100644
          return AKEY_STATE_UNKNOWN;
      }
      std::scoped_lock _l(mLock);
-@@ -2444,7 +2444,7 @@ void EventHub::openDeviceLocked(const std::string& devicePath) {
+@@ -2500,7 +2500,7 @@ void EventHub::openDeviceLocked(const std::string& devicePath) {
      }
  
      // Check whether this device has switches.
@@ -36,10 +36,10 @@ index 552b512..13a8ad2 100644
              device->classes |= InputDeviceClass::SWITCH;
              break;
 diff --git a/services/inputflinger/reader/include/EventHub.h b/services/inputflinger/reader/include/EventHub.h
-index 5839b4c..75e99a1 100644
+index 9f3a57c..dd8aba7 100644
 --- a/services/inputflinger/reader/include/EventHub.h
 +++ b/services/inputflinger/reader/include/EventHub.h
-@@ -644,8 +644,8 @@ private:
+@@ -656,8 +656,8 @@ private:
          BitArray<KEY_CNT> keyBitmask;
          BitArray<KEY_CNT> keyState;
          BitArray<REL_CNT> relBitmask;

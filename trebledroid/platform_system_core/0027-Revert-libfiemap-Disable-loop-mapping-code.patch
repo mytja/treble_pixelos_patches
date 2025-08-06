@@ -1,4 +1,4 @@
-From c24d9e987d3a7fc6d02db4367e24c8b658a9f2da Mon Sep 17 00:00:00 2001
+From e5c5456ae88ed7cdc12f100c051dda7772a9246d Mon Sep 17 00:00:00 2001
 From: signoreTNT <71853850+signoreTNT@users.noreply.github.com>
 Date: Wed, 12 Feb 2025 12:41:40 +0100
 Subject: [PATCH 27/27] Revert "libfiemap: Disable loop mapping code."
@@ -9,7 +9,7 @@ This reverts commit d7f09657617cd26734729bf8bc24b9a7829a544d.
  1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/fs_mgr/libfiemap/image_manager.cpp b/fs_mgr/libfiemap/image_manager.cpp
-index 85f4ed6..b8eba80 100644
+index 83766ad..71a041b 100644
 --- a/fs_mgr/libfiemap/image_manager.cpp
 +++ b/fs_mgr/libfiemap/image_manager.cpp
 @@ -531,16 +531,11 @@ bool ImageManager::MapImageDevice(const std::string& name,

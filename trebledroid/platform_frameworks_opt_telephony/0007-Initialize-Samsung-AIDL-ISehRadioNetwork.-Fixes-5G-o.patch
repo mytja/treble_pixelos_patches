@@ -1,7 +1,7 @@
-From 97bc426830df8b235f360676e106eec7f2b065dd Mon Sep 17 00:00:00 2001
+From 7f68db5873504841cc2a31757acf070f42e9f2ae Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 21 Feb 2024 12:50:28 -0500
-Subject: [PATCH 07/10] Initialize Samsung AIDL ISehRadioNetwork. Fixes 5G on
+Subject: [PATCH 07/11] Initialize Samsung AIDL ISehRadioNetwork. Fixes 5G on
  S24
 
 ---
@@ -11,22 +11,22 @@ Subject: [PATCH 07/10] Initialize Samsung AIDL ISehRadioNetwork. Fixes 5G on
  3 files changed, 144 insertions(+), 2 deletions(-)
 
 diff --git a/Android.bp b/Android.bp
-index a6e526c..047c8e7 100644
+index e667cb3..e87ddb3 100644
 --- a/Android.bp
 +++ b/Android.bp
 @@ -90,6 +90,7 @@ java_library {
-         "android.hardware.radio.network-V4-java",
-         "android.hardware.radio.sim-V4-java",
-         "android.hardware.radio.voice-V4-java",
+         "android.hardware.radio.network-V5-java",
+         "android.hardware.radio.sim-V5-java",
+         "android.hardware.radio.voice-V5-java",
 +        "vendor.samsung.hardware.radio.network-V1-java",
          "voip-common",
          "ims-common",
          "unsupportedappusage",
 diff --git a/src/java/com/android/internal/telephony/RIL.java b/src/java/com/android/internal/telephony/RIL.java
-index 12f7166..dfac2d4 100644
+index 6024d94..1017a92 100644
 --- a/src/java/com/android/internal/telephony/RIL.java
 +++ b/src/java/com/android/internal/telephony/RIL.java
-@@ -907,7 +907,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
+@@ -867,7 +867,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
                              mHalVersion.put(service, ((RadioNetworkProxy) serviceProxy).setAidl(
                                      mHalVersion.get(service),
                                      android.hardware.radio.network.IRadioNetwork.Stub
@@ -36,7 +36,7 @@ index 12f7166..dfac2d4 100644
                          break;
                      case HAL_SERVICE_SIM:
 diff --git a/src/java/com/android/internal/telephony/RadioNetworkProxy.java b/src/java/com/android/internal/telephony/RadioNetworkProxy.java
-index c4b6f76..2b91c8b 100644
+index 5db7706..f4123f8 100644
 --- a/src/java/com/android/internal/telephony/RadioNetworkProxy.java
 +++ b/src/java/com/android/internal/telephony/RadioNetworkProxy.java
 @@ -34,6 +34,20 @@ import java.util.ArrayList;

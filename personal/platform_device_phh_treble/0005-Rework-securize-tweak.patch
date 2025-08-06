@@ -1,7 +1,7 @@
-From 53fe489ba6016a4253444bc529d25ee65157e54d Mon Sep 17 00:00:00 2001
+From c192a577925fb5e6efb03e5606b16cc0fbba0f3d Mon Sep 17 00:00:00 2001
 From: Alberto Ponces <ponces26@gmail.com>
 Date: Wed, 25 Dec 2019 12:34:05 +0200
-Subject: [PATCH 5/8] Rework securize tweak
+Subject: [PATCH 5/7] Rework securize tweak
 
 ---
  base.mk      |  1 -
@@ -21,10 +21,10 @@ index e69d151..ac1e297 100644
  
  PRODUCT_COPY_FILES += \
 diff --git a/rw-system.sh b/rw-system.sh
-index a7b94f6..543b156 100644
+index 3e25c0b..d2ef432 100644
 --- a/rw-system.sh
 +++ b/rw-system.sh
-@@ -785,32 +785,59 @@ copyprop() {
+@@ -790,32 +790,59 @@ copyprop() {
          resetprop_phh "$1" "$(getprop "$2")"
      fi
  }
@@ -87,7 +87,7 @@ index a7b94f6..543b156 100644
      (getprop ro.vendor.build.security_patch; getprop ro.keymaster.xxx.security_patch) |sort |tail -n 1 |while read v;do
          [ -n "$v" ] && resetprop_phh ro.build.version.security_patch "$v"
      done
-@@ -839,22 +866,6 @@ if [ -f /system/phh/secure ] || [ -f /metadata/phh/secure ];then
+@@ -844,22 +871,6 @@ if [ -f /system/phh/secure ] || [ -f /metadata/phh/secure ];then
  
      resetprop_phh ro.adb.secure 1
  

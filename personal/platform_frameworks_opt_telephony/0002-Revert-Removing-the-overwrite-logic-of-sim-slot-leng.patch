@@ -1,0 +1,30 @@
+From b517d62fc180163d3004b765551a5808a2a455cf Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Wed, 16 Jul 2025 12:02:06 +0200
+Subject: [PATCH 2/2] Revert "Removing the overwrite logic of sim slot length
+ to mCi's length"
+
+This reverts commit 42e37234cee15c9f3fcfac0532110abfc8843b99.
+---
+ .../com/android/internal/telephony/uicc/UiccController.java  | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/java/com/android/internal/telephony/uicc/UiccController.java b/src/java/com/android/internal/telephony/uicc/UiccController.java
+index c242a1b..b2d48cf 100644
+--- a/src/java/com/android/internal/telephony/uicc/UiccController.java
++++ b/src/java/com/android/internal/telephony/uicc/UiccController.java
+@@ -278,6 +278,11 @@ public class UiccController extends Handler {
+         if (DBG) {
+             logWithLocalLog("config_num_physical_slots = " + numPhysicalSlots);
+         }
++        // Minimum number of physical slot count should be equals to or greater than phone count,
++        // if it is less than phone count use phone count as physical slot count.
++        if (numPhysicalSlots < mCis.length) {
++            numPhysicalSlots = mCis.length;
++        }
+ 
+         mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
+ 
+-- 
+2.34.1
+

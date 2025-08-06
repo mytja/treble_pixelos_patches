@@ -1,4 +1,4 @@
-From 36479105d5ae5540f777e3c519a0743d1577470e Mon Sep 17 00:00:00 2001
+From d3863f0e056ec7ee5ea24ac9c5b607c529192b02 Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Fri, 11 Oct 2024 21:33:24 +0200
 Subject: [PATCH 1/2] Replace prebuilt TrebleApp with modified app in

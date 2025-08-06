@@ -1,4 +1,4 @@
-From 870e09c14043c8accc78f827b439514c4b8d3674 Mon Sep 17 00:00:00 2001
+From 8bbd9c02f8466c7f300795cab08b251b557042b8 Mon Sep 17 00:00:00 2001
 From: ChonDoit <thphantomblog@gmail.com>
 Date: Fri, 25 Aug 2023 09:18:32 -0300
 Subject: [PATCH 02/13] Add options for status bar paddings
@@ -10,7 +10,7 @@ Subject: [PATCH 02/13] Add options for status bar paddings
  3 files changed, 50 insertions(+), 1 deletion(-)
 
 diff --git a/app/src/main/java/me/phh/treble/app/Misc.kt b/app/src/main/java/me/phh/treble/app/Misc.kt
-index 7c0c1c9..406a070 100644
+index 6ae2449..803ce42 100644
 --- a/app/src/main/java/me/phh/treble/app/Misc.kt
 +++ b/app/src/main/java/me/phh/treble/app/Misc.kt
 @@ -143,6 +143,8 @@ object Misc: EntryStartup {
@@ -22,7 +22,7 @@ index 7c0c1c9..406a070 100644
                  }
              }
              MiscSettings.roundedCornersOverlay -> {
-@@ -297,6 +299,30 @@ object Misc: EntryStartup {
+@@ -301,6 +303,30 @@ object Misc: EntryStartup {
              MiscSettings.allowBinderThread -> {
                  val value = sp.getBoolean(key, false)
                  SystemProperties.set("persist.sys.phh.allow_binder_thread_on_incoming_calls", if(value) "1" else "0")
@@ -54,10 +54,10 @@ index 7c0c1c9..406a070 100644
              MiscSettings.lowGammaBrightness -> {
                  val value = sp.getBoolean(key, false)
 diff --git a/app/src/main/java/me/phh/treble/app/MiscSettings.kt b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
-index bb29106..263cb0e 100644
+index 4f75ddc..837451a 100644
 --- a/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 +++ b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
-@@ -42,6 +42,9 @@ object MiscSettings : Settings {
+@@ -43,6 +43,9 @@ object MiscSettings : Settings {
      val mtkTouchHintIsRotate = "key_misc_mediatek_touch_hint_rotate"
      val mtkGedKpi = "key_misc_mediatek_ged_kpi"
      val allowBinderThread = "key_misc_allow_binder_thread_on_incoming_calls"
@@ -68,7 +68,7 @@ index bb29106..263cb0e 100644
      val linearBrightness = "key_misc_linear_brightness"
      val forceDisplay5g = "key_misc_force_display_5g"
 diff --git a/app/src/main/res/xml/pref_misc.xml b/app/src/main/res/xml/pref_misc.xml
-index 950d3a2..721f51e 100644
+index f2c668f..e1f9391 100644
 --- a/app/src/main/res/xml/pref_misc.xml
 +++ b/app/src/main/res/xml/pref_misc.xml
 @@ -33,7 +33,7 @@

@@ -1,4 +1,4 @@
-From effcace6c2250b451b795ddad4b6f52ea5d3f24b Mon Sep 17 00:00:00 2001
+From cdc41c0cf113b39574523db094f979ec3cbdf387 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Tue, 7 May 2024 19:28:41 -0400
 Subject: [PATCH] Disable O_DIRECT for old kernels
@@ -16,7 +16,7 @@ Change-Id: I710e870bc467000547b00958b0818aaf0ddca072
  1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/apexd/apexd_loop.cpp b/apexd/apexd_loop.cpp
-index a8155cd..d0078cc 100644
+index 44a2f22..83bfedc 100644
 --- a/apexd/apexd_loop.cpp
 +++ b/apexd/apexd_loop.cpp
 @@ -36,6 +36,7 @@
@@ -27,7 +27,7 @@ index a8155cd..d0078cc 100644
  #include <unistd.h>
  #include <utils/Trace.h>
  
-@@ -364,7 +365,20 @@ static Result<LoopbackDeviceUniqueFd> ConfigureLoopDevice(
+@@ -394,7 +395,20 @@ static Result<LoopbackDeviceUniqueFd> ConfigureLoopDevice(
     * condition is now met.
     */
    bool use_buffered_io = false;

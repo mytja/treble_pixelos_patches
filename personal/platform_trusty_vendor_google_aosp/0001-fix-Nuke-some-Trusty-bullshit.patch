@@ -1,0 +1,35 @@
+From e6920ce8c648d6df6c272accff9edfd3df47a3bd Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Wed, 6 Aug 2025 20:47:48 +0200
+Subject: [PATCH] fix: Nuke some Trusty bullshit
+
+It causes build errors...
+
+Change-Id: I855622e00f51e529702de82e80bb34027f9d9e09
+---
+ scripts/Android.bp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/scripts/Android.bp b/scripts/Android.bp
+index 06b7920..ae616da 100644
+--- a/scripts/Android.bp
++++ b/scripts/Android.bp
+@@ -405,7 +405,6 @@ genrule_tee_cmd_template = "(mkdir -p $(genDir)/build-root && " +
+     "cp -t . external/trusty/lk/makefile trusty/vendor/google/aosp/lk_inc.mk && " +
+     "AIDL_RUST_GLUE_TOOL=$(location aidl_rust_glue) PROTOC_TOOL=$(location aprotoc) " +
+     "PROTOC_PLUGIN_BINARY=$(location trusty_metrics_atoms_protoc_plugin) " +
+-    "QEMU_PREBUILTS_DIR=$(location trusty_qemu_system_aarch64) " +
+     "MKE2FS=$(location mke2fs) " +
+     "TRUSTY_SKIP_DOCS=true " +
+     "PACKAGE_TRUSTY_IMAGES_ONLY=true " +
+@@ -424,7 +423,6 @@ genrule {
+         "trusty_aosp.gen.defaults",
+     ],
+     tools: [
+-        "trusty_qemu_system_aarch64",
+         "mke2fs",
+     ],
+     out: [
+-- 
+2.34.1
+

@@ -1,7 +1,7 @@
-From 58f0377e40ab38aafa8c5d70e9b8d6ebe354067b Mon Sep 17 00:00:00 2001
+From 1f23e85d72998c8063c35496a283c9893890341c Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sat, 17 May 2025 18:29:59 +0200
-Subject: [PATCH 13/13] feat(treble_app): add an option to force restore 5G
+Subject: [PATCH 11/13] feat(treble_app): add an option to force restore 5G
 
 Paired with a commit in frameworks/opt/telephony
 ---

@@ -1,4 +1,4 @@
-From 3fcb868a36afbf53d1454cd57f9e686687f258f6 Mon Sep 17 00:00:00 2001
+From 20450dc6ac060b0d5c272f7059991db13fa8337e Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 19 Feb 2022 08:20:25 -0500
 Subject: [PATCH 2/2] Add new mechanism to fake vendor props on a per-process
@@ -7,11 +7,11 @@ Subject: [PATCH 2/2] Add new mechanism to fake vendor props on a per-process
 This reads debug.phh.props.<process name>. If its value is "vendor",
 then ro.product.device/ro.product.manufacturer is read from vendor
 ---
- libc/system_properties/system_properties.cpp | 87 +++++++++++++++++++-
- 1 file changed, 85 insertions(+), 2 deletions(-)
+ libc/system_properties/system_properties.cpp | 86 +++++++++++++++++++-
+ 1 file changed, 84 insertions(+), 2 deletions(-)
 
 diff --git a/libc/system_properties/system_properties.cpp b/libc/system_properties/system_properties.cpp
-index d916770..fe6de46 100644
+index d916770..5d6e030 100644
 --- a/libc/system_properties/system_properties.cpp
 +++ b/libc/system_properties/system_properties.cpp
 @@ -36,6 +36,8 @@
@@ -109,17 +109,11 @@ index d916770..fe6de46 100644
  static bool is_dir(const char* pathname) {
    struct stat info;
    if (stat(pathname, &info) == -1) {
-@@ -163,19 +244,21 @@ uint32_t SystemProperties::AreaSerial() {
- }
- 
- const prop_info* SystemProperties::Find(const char* name) {
-+  const char* newName = redirectToProp(name);
-+
-   if (!initialized_) {
-     return nullptr;
+@@ -168,14 +249,15 @@ const prop_info* SystemProperties::Find(const char* name) {
    }
  
    pi_hooks.OnFind(&name);
++  const char* newName = redirectToProp(name);
  
 -  prop_area* pa = contexts_->GetPropAreaForName(name);
 +  prop_area* pa = contexts_->GetPropAreaForName(newName);

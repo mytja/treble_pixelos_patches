@@ -1,4 +1,4 @@
-From 1fdfa4a754aaea4e040719f1ecad1c35f6ffd9e9 Mon Sep 17 00:00:00 2001
+From f35c2045539a56b66dd1af6ffa4be35faf76d9bb Mon Sep 17 00:00:00 2001
 From: mytja <mitja@severkar.eu>
 Date: Sun, 27 Oct 2024 20:29:53 +0100
 Subject: [PATCH 05/13] treble_app: add a setting to force a specific number of
@@ -16,7 +16,7 @@ Change-Id: I54cd19f02c7633912f0d272c7a038093182975c7
  4 files changed, 27 insertions(+)
 
 diff --git a/app/src/main/java/me/phh/treble/app/Misc.kt b/app/src/main/java/me/phh/treble/app/Misc.kt
-index f0fd26b..404142e 100644
+index 7eae413..9870137 100644
 --- a/app/src/main/java/me/phh/treble/app/Misc.kt
 +++ b/app/src/main/java/me/phh/treble/app/Misc.kt
 @@ -187,6 +187,10 @@ object Misc: EntryStartup {
@@ -31,7 +31,7 @@ index f0fd26b..404142e 100644
                  val thisModeIndex = sp.getString(key, "-1").toInt()
                  val displayInfo = displayManager.displays[0]
 diff --git a/app/src/main/java/me/phh/treble/app/MiscSettings.kt b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
-index 55abb99..9257840 100644
+index ba2856c..0c8e22c 100644
 --- a/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 +++ b/app/src/main/java/me/phh/treble/app/MiscSettings.kt
 @@ -24,6 +24,7 @@ object MiscSettings : Settings {
@@ -69,11 +69,11 @@ index ae3ae4f..8e38cb2 100644
        <item>"Don't force"</item>
        <item>"60fps"</item>
 diff --git a/app/src/main/res/xml/pref_misc.xml b/app/src/main/res/xml/pref_misc.xml
-index 233d15b..503dd6f 100644
+index b6993ca..119d2e6 100644
 --- a/app/src/main/res/xml/pref_misc.xml
 +++ b/app/src/main/res/xml/pref_misc.xml
-@@ -218,6 +218,13 @@
-             android:title="Automatically restart RIL" />
+@@ -223,6 +223,13 @@
+             android:summary="Turning this option on or off may fix sending SMS messages on certain Samsung devices/carriers" />
          <Preference android:title="@string/remove_telephony_subsystem"
              android:key="key_misc_removetelephony" />
 +        <ListPreference

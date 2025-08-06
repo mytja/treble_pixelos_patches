@@ -1,0 +1,67 @@
+From 7eeee8e7057989953157651eb3f81452d819e968 Mon Sep 17 00:00:00 2001
+From: mytja <mitja@severkar.eu>
+Date: Wed, 6 Aug 2025 20:42:24 +0200
+Subject: [PATCH] tempfix: Nuke vibrator vendor service
+
+It's not needed for the GSI in any case. It just causes build errors.
+
+Change-Id: If0a8ec61a6e2449ae836f6839e9e67accd1b7569
+---
+ aidl/VibratorCL/Android.bp |  6 +-----
+ vibrator-vendor-product.mk | 21 ---------------------
+ 2 files changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/aidl/VibratorCL/Android.bp b/aidl/VibratorCL/Android.bp
+index bf5c7ea..1356602 100644
+--- a/aidl/VibratorCL/Android.bp
++++ b/aidl/VibratorCL/Android.bp
+@@ -6,17 +6,13 @@ cc_library_shared {
+     cflags: COMMON_CFLAGS,
+     vendor: true,
+     srcs: ["Vibrator.cpp"],
+-    include_dirs: ["vendor/qcom/opensource/pal/inc",
+-                   "vendor/qcom/proprietary/args/"],
++    include_dirs: [],
+     header_libs: [
+-        "libspf-headers",
+-        "libarosal_headers",
+     ],
+ 
+     shared_libs: [
+         "android.hardware.vibrator-V2-ndk",
+         "libbinder_ndk",
+         "liblog",
+-        "libpalclient",
+     ],
+ }
+\ No newline at end of file
+diff --git a/vibrator-vendor-product.mk b/vibrator-vendor-product.mk
+index ddd1728..8b13789 100644
+--- a/vibrator-vendor-product.mk
++++ b/vibrator-vendor-product.mk
+@@ -1,22 +1 @@
+-TARGET_DISABLE_VIBRATOR := false
+-ifeq ($(TARGET_USES_QMAA),true)
+-ifneq ($(TARGET_USES_QMAA_OVERRIDE_VIBRATOR),true)
+ 
+-TARGET_DISABLE_VIBRATOR := true
+-
+-endif #TARGET_USES_QMAA_OVERRIDE_VIBRATOR
+-endif #TARGET_USES_QMAA
+-
+-ifneq ($(TARGET_DISABLE_VIBRATOR),true)
+-QTI_VIBRATOR_HAL_SERVICE := \
+-      vendor.qti.hardware.vibrator.service
+-
+-PRODUCT_PACKAGES += $(QTI_VIBRATOR_HAL_SERVICE)
+-
+-PRODUCT_COPY_FILES += \
+-      vendor/qcom/opensource/vibrator/excluded-input-devices.xml:vendor/etc/excluded-input-devices.xml
+-
+-PRODUCT_COPY_FILES += \
+-      vendor/qcom/opensource/vibrator/aidl/HapticsPolicy.xml:vendor/etc/HapticsPolicy.xml
+-
+-endif
+-- 
+2.34.1
+

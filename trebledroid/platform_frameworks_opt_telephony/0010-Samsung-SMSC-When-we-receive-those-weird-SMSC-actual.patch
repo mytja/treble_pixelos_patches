@@ -1,7 +1,7 @@
-From 98b0308d12cc008d480293b600632de005edd7a6 Mon Sep 17 00:00:00 2001
+From 41b23874849c9eab0ed1d1a24571cae12126bf06 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 11 Jan 2025 12:06:12 -0500
-Subject: [PATCH 10/10] Samsung SMSC: When we receive those weird SMSC,
+Subject: [PATCH 10/11] Samsung SMSC: When we receive those weird SMSC,
  actually parse it because even in 2025 we still need SMSC for some carriers
 
 ---
